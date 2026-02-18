@@ -1,0 +1,50 @@
+# Node
+node_modules/
+dist/
+build/
+.pnpm-store/
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env/
+.python-version
+
+# Coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Three.js build artifacts (if any)
+public/build/
+
+# Documentation build artifacts (if LaTeX compiled locally)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
