@@ -1,50 +1,56 @@
-# Node
+# --- System Files ---
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+
+# --- Node / pnpm ---
 node_modules/
+.pnpm-debug.log*
+.npm-debug.log*
+# Only ignore if you explicitly configured pnpm to use a local store
+.pnpm-store/
+
+# --- Build Outputs ---
 dist/
 build/
-.pnpm-store/
+out/
+.next/
+# Three.js / WebGL specific (if you use custom shaders or temporary builds)
+public/build/
+
+# --- Environment / Secrets ---
 .env
 .env.local
 .env.*.local
+!.env.example
 
-# Logs
-logs/
-*.log
-npm-debug.log*
-pnpm-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
+# --- IDEs ---
 .idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
 
-# Python
+# --- Python (Virtual Envs) ---
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 venv/
-.env/
+.venv/
+env/
 .python-version
 
-# Coverage
+# --- Testing / Coverage ---
 coverage/
+.nyc_output/
 
-# Temporary files
-*.tmp
-*.swp
-
-# Three.js build artifacts (if any)
-public/build/
-
-# Documentation build artifacts (if LaTeX compiled locally)
+# --- Documentation (LaTeX) ---
 *.aux
+*.fdb_latexmk
+*.fls
+*.gz
 *.log
 *.out
 *.toc
-*.fls
-*.fdb_latexmk
 *.synctex.gz
