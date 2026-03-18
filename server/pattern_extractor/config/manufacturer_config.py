@@ -33,9 +33,9 @@ MANUFACTURER_CONFIGS = {
             "max_db": 0,
         },
         "circle_color_range": {
-            "r_min": 0, "r_max": 80,
-            "g_min": 0, "g_max": 80,
-            "b_min": 0, "b_max": 80,
+            "r_min": 160, "r_max": 170,
+            "g_min": 160, "g_max": 170,
+            "b_min": 160, "b_max": 170,
         },
     },
     "molex": {
@@ -51,9 +51,9 @@ MANUFACTURER_CONFIGS = {
             "max_db": 0,
         },
         "circle_color_range": {
-            "r_min": 0, "r_max": 80,
-            "g_min": 0, "g_max": 80,
-            "b_min": 0, "b_max": 80,
+            "r_min": 160, "r_max": 170,
+            "g_min": 160, "g_max": 170,
+            "b_min": 160, "b_max": 170,
         },
     },
     "alpha_wireless": {
@@ -69,9 +69,9 @@ MANUFACTURER_CONFIGS = {
             "max_db": 0,
         },
         "circle_color_range": {
-            "r_min": 0, "r_max": 60,
-            "g_min": 0, "g_max": 60,
-            "b_min": 0, "b_max": 60,
+            "r_min": 130, "r_max": 160,
+            "g_min": 130, "g_max": 160,
+            "b_min": 130, "b_max": 160,
         },
     },
     "quectel": {
@@ -87,9 +87,9 @@ MANUFACTURER_CONFIGS = {
             "max_db": 0,
         },
         "circle_color_range": {
-            "r_min": 0, "r_max": 80,
-            "g_min": 0, "g_max": 80,
-            "b_min": 0, "b_max": 80,
+            "r_min": 135, "r_max": 170,
+            "g_min": 135, "g_max": 170,
+            "b_min": 135, "b_max": 170,
         },
     },
 }
