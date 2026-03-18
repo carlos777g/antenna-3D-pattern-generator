@@ -110,7 +110,7 @@ def probar_una_imagen():
     """
     Para probar rápidamente con una sola imagen
     """
-    imagen_prueba = '../datasheets/taoglas-1.png'  
+    imagen_prueba = '/home/car/Documentos/antenna-3D-pattern-generator/server/python_modules/datasheets/taoglas-1.png'  
     # imagen_prueba = '../datasheets/rf-elements-1.png'  
     # imagen_prueba = '../datasheets/molex-1.png'  
     # imagen_prueba = '../datasheets/alpha-wireless-1.png'  
