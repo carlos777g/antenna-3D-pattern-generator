@@ -54,3 +54,31 @@ coverage/
 *.out
 *.toc
 *.synctex.gz
+
+# --- Python (Virtual Envs & Conda) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+.python-version
+
+# --- Conda specific ---
+.condarc
+conda-meta/
+
+# --- Cython / Scientific Python ---
+*.so
+.ipynb_checkpoints
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Graphics/CV specific ---
+# Si generas archivos de imagen temporales en el procesamiento
+*.jpg
+*.png
+*.npy
+!data/  # Mantener solo si tienes una carpeta de datos fuente
