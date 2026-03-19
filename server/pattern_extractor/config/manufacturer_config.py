@@ -8,11 +8,11 @@ MANUFACTURER_CONFIGS = {
             "g_min": 0,  "g_max": 255,
             "b_min": 0,  "b_max": 255,
         },
-        "angle_offset_deg": 90,      # degrees: where 0 deg is in the image (clockwise from top)
+        "angle_offset_deg": 0,      # degrees: where 0 deg is in the image (clockwise from top)
         "db_scale": {
-            "rings": 4,              # number of concentric reference rings
-            "min_db": -30,           # value at outermost ring
-            "max_db": 0,             # value at center reference
+            "rings": 7,              # number of concentric reference rings
+            "min_db": 5,           # value at outermost ring
+            "max_db": -35,             # value at center reference
         },
         "circle_color_range": {      # color of concentric rings in this manufacturer's images
             "r_min": 0, "r_max": 80,
@@ -26,7 +26,7 @@ MANUFACTURER_CONFIGS = {
             "g_min": 0,   "g_max": 255,
             "b_min": 0,   "b_max": 255,
         },
-        "angle_offset_deg": 90,
+        "angle_offset_deg": 0,
         "db_scale": {
             "rings": 4,
             "min_db": -30,
@@ -44,11 +44,11 @@ MANUFACTURER_CONFIGS = {
             "g_min": 0,  "g_max": 255,
             "b_min": 187,"b_max": 187,
         },
-        "angle_offset_deg": 90,
+        "angle_offset_deg": 0,
         "db_scale": {
-            "rings": 4,
-            "min_db": -30,
-            "max_db": 0,
+            "rings": 6,
+            "min_db": -25,
+            "max_db": 5,
         },
         "circle_color_range": {
             "r_min": 160, "r_max": 170,
@@ -64,8 +64,8 @@ MANUFACTURER_CONFIGS = {
         },
         "angle_offset_deg": 90,
         "db_scale": {
-            "rings": 4,
-            "min_db": -30,
+            "rings": 8,
+            "min_db": -35,
             "max_db": 0,
         },
         "circle_color_range": {
@@ -80,11 +80,11 @@ MANUFACTURER_CONFIGS = {
             "g_min": 130,"g_max": 150,
             "b_min": 0,  "b_max": 255,
         },
-        "angle_offset_deg": 90,
+        "angle_offset_deg": 0,
         "db_scale": {
-            "rings": 4,
-            "min_db": -30,
-            "max_db": 0,
+            "rings": 5,
+            "min_db": -40,
+            "max_db": 10,
         },
         "circle_color_range": {
             "r_min": 135, "r_max": 170,
