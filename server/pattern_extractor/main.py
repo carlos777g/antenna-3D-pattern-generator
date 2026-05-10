@@ -4,7 +4,9 @@ from pathlib import Path
 from config.manufacturer_config import get_manufacturer_config
 from modules.image_loader import load_image_rgb
 from modules.pattern_mask import extract_pattern_mask
-from modules.circle_detector import detect_concentric_circles
+# from modules.circle_detector import detect_concentric_circles
+from modules.circle_detector import detect_pattern_center_and_outer_ring
+
 from modules.polar_sampler import sample_polar
 from modules.visualizer import build_annotated_image
 from modules.result_writer import write_pattern_json
@@ -30,9 +32,18 @@ def process_single_image(image_path: str, manufacturer: str) -> dict:
     img_rgb = load_image_rgb(image_path)
     mask, mask_stats = extract_pattern_mask(img_rgb, config["rgb_range"])
 
-    circle_result = detect_concentric_circles(img_rgb, config["circle_color_range"])
+    circle_result = detect_pattern_center_and_outer_ring(
+    img_rgb,
+    config["circle_color_range"],
+    max_ring_radius_px=config["max_ring_radius_px"],
+    )
     center = circle_result["center"]
+    outer_radius_px = circle_result["outer_radius_px"]
 
+    print(f"  accepted radii  : {circle_result['all_radii']}")
+    print(f"  rejected radii  : {circle_result['rejected_radii']}")
+    print(f"  center          : {center}")
+    print(f"  outer_radius_px : {outer_radius_px}")
     warnings = []
     if center is None:
         warnings.append("Center detection failed. JSON will have null center.")
