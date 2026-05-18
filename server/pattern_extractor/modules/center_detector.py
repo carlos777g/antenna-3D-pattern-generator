@@ -3,7 +3,7 @@ import numpy as np
 from typing import Optional
 
 
-def detect_center(ring_mask: np.ndarray) -> Optional[tuple]:
+def detect_center(ring_mask: np.ndarray, center_method: str = "largest_cluster") -> Optional[tuple]:
     """
     Detect the radiation pattern center by running Hough Circle Transform
     on the ring mask and computing the consensus center across all detected
@@ -35,17 +35,31 @@ def detect_center(ring_mask: np.ndarray) -> Optional[tuple]:
         return None
 
     circles = np.round(circles[0]).astype(int)
-    center = _consensus_center(circles)
+    center = _consensus_center(circles, method=center_method)
     return center
 
 
-def _consensus_center(circles: np.ndarray, tolerance: int = 15) -> tuple:
+def _consensus_center(circles: np.ndarray, tolerance: int = 15, method: str = "largest_cluster") -> tuple:
     """
     Cluster circle centers within tolerance pixels and return the centroid
     of the largest cluster.
     """
-    clusters = []
+    if method == "median":
+        median_cx = float(np.median(circles[:, 0]))
+        median_cy = float(np.median(circles[:, 1]))
+        refined = [
+            (cx, cy) for cx, cy, _ in circles
+            if abs(cx - median_cx) <= tolerance and abs(cy - median_cy) <= tolerance
+        ]
+        if not refined:
+            return (int(median_cx), int(median_cy))
+        return (
+            int(np.mean([p[0] for p in refined])),
+            int(np.mean([p[1] for p in refined])),
+        )
 
+    # default: largest_cluster
+    clusters = []
     for cx, cy, _ in circles:
         placed = False
         for cluster in clusters:
@@ -57,7 +71,6 @@ def _consensus_center(circles: np.ndarray, tolerance: int = 15) -> tuple:
                 break
         if not placed:
             clusters.append([(cx, cy)])
-
     largest = max(clusters, key=len)
     return (
         int(np.mean([p[0] for p in largest])),
