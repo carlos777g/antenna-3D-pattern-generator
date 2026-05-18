@@ -5,6 +5,7 @@ from config.manufacturer_config import get_manufacturer_config
 from modules.image_loader import load_image_rgb
 from modules.pattern_mask import extract_pattern_mask
 from modules.ring_mask_extractor import extract_ring_mask
+from modules.center_detector import detect_center
 
 # ------------------------------------------------------------
 # DEBUG FLAG
@@ -67,17 +68,35 @@ def process_single_image(image_path: str, manufacturer: str) -> dict:
 
     # -- STEP 3a: Ring mask --
     ring_mask = extract_ring_mask(img_rgb, config["circle_color_range"])
-    ring_pixel_count = int(np.sum(ring_mask > 0))
-    print(f"  [3a] ring_mask active pixels: {ring_pixel_count}")
-    if ring_pixel_count == 0:
-        warnings.append("ring_mask is empty: circle_color_range may be incorrect.")
-    if DEBUG_STEPS:
-        debug_path = OUTPUT_DEBUG_RINGMASK / f"{stem}.png"
-        cv2.imwrite(str(debug_path), ring_mask)
-        print(f"  [3a] debug image saved: {debug_path}")
+    ## Uncomment next lines if wanna see the amount of ring pixels and wanna output the images on ./output/debug/ring_mask
+    # ring_pixel_count = int(np.sum(ring_mask > 0))
+    # print(f"  [3a] ring_mask active pixels: {ring_pixel_count}")
+    # if ring_pixel_count == 0:
+    #     warnings.append("ring_mask is empty: circle_color_range may be incorrect.")
+    # if DEBUG_STEPS:
+    #     debug_path = OUTPUT_DEBUG_RINGMASK / f"{stem}.png"
+    #     cv2.imwrite(str(debug_path), ring_mask)
+    #     print(f"  [3a] debug image saved: {debug_path}")
+
 
     # -- STEP 3b: Center detection --
-    # center = detect_center(ring_mask)
+    center = detect_center(ring_mask)
+    print(f"  [3b] center: {center}")
+    if center is None:
+        warnings.append("center not found: Hough detected no circles.")
+    if DEBUG_STEPS and center is not None:
+        debug_img = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
+        cx, cy = center
+        cv2.drawMarker(
+            debug_img, (cx, cy),
+            color=(0, 0, 255),
+            markerType=cv2.MARKER_CROSS,
+            markerSize=20,
+            thickness=2,
+        )
+        debug_path = OUTPUT_DEBUG_CENTER / f"{stem}.png"
+        cv2.imwrite(str(debug_path), debug_img)
+        print(f"  [3b] debug image saved: {debug_path}")
 
     # -- STEP 3c: Outer ring detection --
     # outer_radius_px = detect_outer_ring(ring_mask, center, config["max_ring_radius_px"])
