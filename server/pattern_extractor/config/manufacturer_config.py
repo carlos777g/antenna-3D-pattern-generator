@@ -10,7 +10,6 @@ MANUFACTURER_CONFIGS = {
         },
         "angle_offset_deg": 0,      # degrees: where 0 deg is in the image (clockwise from top)
         "db_scale": {
-            "rings": 7,              # number of concentric reference rings
             "min_db": 5,           # value at outermost ring
             "max_db": -35,             # value at center reference
         },
@@ -29,7 +28,6 @@ MANUFACTURER_CONFIGS = {
         },
         "angle_offset_deg": 0,
         "db_scale": {
-            "rings": 4,
             "min_db": -30,
             "max_db": 0,
         },
@@ -48,7 +46,6 @@ MANUFACTURER_CONFIGS = {
         },
         "angle_offset_deg": 0,
         "db_scale": {
-            "rings": 6,
             "min_db": -25,
             "max_db": 5,
         },
@@ -67,7 +64,6 @@ MANUFACTURER_CONFIGS = {
         },
         "angle_offset_deg": 90,
         "db_scale": {
-            "rings": 8,
             "min_db": -35,
             "max_db": 0,
         },
@@ -86,7 +82,6 @@ MANUFACTURER_CONFIGS = {
         },
         "angle_offset_deg": 0,
         "db_scale": {
-            "rings": 5,
             "min_db": -40,
             "max_db": 10,
         },
