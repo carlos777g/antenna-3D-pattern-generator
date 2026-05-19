@@ -80,7 +80,8 @@ def process_single_image(image_path: str, manufacturer: str) -> dict:
 
 
     # -- STEP 3b: Center detection --
-    center = detect_center(ring_mask, center_method=config["center_method"])
+    center = detect_center(ring_mask, center_method=config["center_method"], hough_min_radius=config["hough_min_radius"],
+    hough_max_radius=config["hough_max_radius"])
     print(f"  [3b] center: {center}")
     if center is None:
         warnings.append("center not found: Hough detected no circles.")

@@ -20,6 +20,7 @@ MANUFACTURER_CONFIGS = {
         },
         "max_ring_radius_px": 128,
         "center_method": "largest_cluster",
+        "hough_min_radius": 20, "hough_max_radius": 110
     },
     "rf_elements": {
         "rgb_range": {
@@ -39,6 +40,7 @@ MANUFACTURER_CONFIGS = {
         },
         "max_ring_radius_px": 128,
         "center_method": "largest_cluster",
+        "hough_min_radius": 20, "hough_max_radius": 110
     },
     "molex": {
         "rgb_range": {
@@ -58,6 +60,7 @@ MANUFACTURER_CONFIGS = {
         },
         "max_ring_radius_px": 128,
         "center_method": "largest_cluster",
+        "hough_min_radius": 20, "hough_max_radius": 110
     },
     "alpha_wireless": {
         "rgb_range": {
@@ -77,6 +80,7 @@ MANUFACTURER_CONFIGS = {
         },
         "max_ring_radius_px": 110,
         "center_method": "median",
+        "hough_min_radius": 20, "hough_max_radius": 110
     },
     "quectel": {
         "rgb_range": {
@@ -90,12 +94,13 @@ MANUFACTURER_CONFIGS = {
             "max_db": 10,
         },
         "circle_color_range": {
-            "r_min": 135, "r_max": 170,
-            "g_min": 135, "g_max": 170,
-            "b_min": 135, "b_max": 170,
+            "r_min": 230, "r_max": 248,
+            "g_min": 230, "g_max": 248,
+            "b_min": 230, "b_max": 248,
         },
         "max_ring_radius_px": 128,
         "center_method": "median",
+        "hough_min_radius": 70, "hough_max_radius": 110
     },
 }
 

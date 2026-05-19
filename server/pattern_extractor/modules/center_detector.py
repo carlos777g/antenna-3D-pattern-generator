@@ -3,7 +3,7 @@ import numpy as np
 from typing import Optional
 
 
-def detect_center(ring_mask: np.ndarray, center_method: str = "largest_cluster") -> Optional[tuple]:
+def detect_center(ring_mask: np.ndarray, center_method: str = "largest_cluster", hough_min_radius: int = 20, hough_max_radius: int = 110,) -> Optional[tuple]:
     """
     Detect the radiation pattern center by running Hough Circle Transform
     on the ring mask and computing the consensus center across all detected
@@ -27,8 +27,8 @@ def detect_center(ring_mask: np.ndarray, center_method: str = "largest_cluster")
         minDist=20,
         param1=50,
         param2=20,
-        minRadius=20,
-        maxRadius=0,   # 0 = no upper limit, handled by ring_mask content
+        minRadius=hough_min_radius, # 70 gives better results for quectel
+        maxRadius=hough_max_radius,   # 0 = no upper limit, handled by ring_mask content, 90 gives better results for quectel
     )
 
     if circles is None:
