@@ -6,6 +6,7 @@ from modules.image_loader import load_image_rgb
 from modules.pattern_mask import extract_pattern_mask
 from modules.ring_mask_extractor import extract_ring_mask
 from modules.center_detector import detect_center
+from modules.outer_ring_detector import detect_outer_ring
 
 # ------------------------------------------------------------
 # DEBUG FLAG
@@ -80,12 +81,39 @@ def process_single_image(image_path: str, manufacturer: str) -> dict:
 
 
     # -- STEP 3b: Center detection --
-    center = detect_center(ring_mask, center_method=config["center_method"], hough_min_radius=config["hough_min_radius"],
-    hough_max_radius=config["hough_max_radius"])
-    print(f"  [3b] center: {center}")
-    if center is None:
-        warnings.append("center not found: Hough detected no circles.")
-    if DEBUG_STEPS and center is not None:
+    center = detect_center(ring_mask, center_method=config["center_method"], hough_min_radius=config["hough_min_radius"], hough_max_radius=config["hough_max_radius"])
+    ## Uncomment next lines if wanna see the output images that shows the found center in each one
+    # print(f"  [3b] center: {center}")
+    # if center is None:
+    #     warnings.append("center not found: Hough detected no circles.")
+    # if DEBUG_STEPS and center is not None:
+    #     debug_img = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
+    #     cx, cy = center
+    #     cv2.drawMarker(
+    #         debug_img, (cx, cy),
+    #         color=(0, 0, 255),
+    #         markerType=cv2.MARKER_CROSS,
+    #         markerSize=20,
+    #         thickness=2,
+    #     )
+    #     debug_path = OUTPUT_DEBUG_CENTER / f"{stem}.png"
+    #     cv2.imwrite(str(debug_path), debug_img)
+    #     print(f"  [3b] debug image saved: {debug_path}")
+
+
+    # -- STEP 3c: Outer ring detection --
+    outer_radius_px = None
+    if center is not None:
+        outer_radius_px = detect_outer_ring(
+            ring_mask,
+            center,
+            max_ring_radius_px=config["max_ring_radius_px"],
+        )
+    ## Uncomment this line if wanna see output images from outer radius
+    print(f"  [3c] outer_radius_px: {outer_radius_px}")
+    if outer_radius_px is None:
+        warnings.append("outer ring not found: check max_ring_radius_px and circle_color_range.")
+    if DEBUG_STEPS and center is not None and outer_radius_px is not None:
         debug_img = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
         cx, cy = center
         cv2.drawMarker(
@@ -95,12 +123,15 @@ def process_single_image(image_path: str, manufacturer: str) -> dict:
             markerSize=20,
             thickness=2,
         )
-        debug_path = OUTPUT_DEBUG_CENTER / f"{stem}.png"
+        cv2.circle(
+            debug_img, (cx, cy),
+            int(outer_radius_px),
+            color=(255, 0, 0),
+            thickness=2,
+        )
+        debug_path = OUTPUT_DEBUG_OUTER / f"{stem}.png"
         cv2.imwrite(str(debug_path), debug_img)
-        print(f"  [3b] debug image saved: {debug_path}")
-
-    # -- STEP 3c: Outer ring detection --
-    # outer_radius_px = detect_outer_ring(ring_mask, center, config["max_ring_radius_px"])
+        print(f"  [3c] debug image saved: {debug_path}")
 
     # -- STEP 4: Polar sampling --
     # samples = sample_polar(
