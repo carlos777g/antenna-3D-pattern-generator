@@ -1,14 +1,22 @@
 # --- System Files ---
 .DS_Store
 Thumbs.db
-*.swp
 *.tmp
+
+# --- Editor (Neovim) ---
+*.swp
+*.swo
+*.swn
+Session.vim
+.netrwhist
+tags
+.tags
 
 # --- Node / pnpm ---
 node_modules/
 .pnpm-debug.log*
 .npm-debug.log*
-# Only ignore if you explicitly configured pnpm to use a local store
+# Only relevant if pnpm is explicitly configured to use a local store
 .pnpm-store/
 
 # --- Build Outputs ---
@@ -16,8 +24,6 @@ dist/
 build/
 out/
 .next/
-# Three.js / WebGL specific (if you use custom shaders or temporary builds)
-public/build/
 
 # --- Environment / Secrets ---
 .env
@@ -32,53 +38,42 @@ public/build/
 !.vscode/extensions.json
 !.vscode/launch.json
 
-# --- Python (Virtual Envs) ---
+# --- Python ---
+# requirements.txt (pinned) remains the source of truth for the Docker
+# build; conda is only used for local development outside containers.
 __pycache__/
 *.py[cod]
 *$py.class
-venv/
 .venv/
+venv/
 env/
 .python-version
 
-# --- Testing / Coverage ---
+# --- Conda (local development only) ---
+.conda/
+envs/
+conda-meta/
+.condarc
+
+# --- Testing / Coverage / Caches ---
 coverage/
 .nyc_output/
-
-# --- Documentation (LaTeX) ---
-*.aux
-*.fdb_latexmk
-*.fls
-*.gz
-*.log
-*.out
-*.toc
-*.synctex.gz
-
-# --- Python (Virtual Envs & Conda) ---
-__pycache__/
-*.py[cod]
-*$py.class
-.venv/
-env/
-venv/
-ENV/
-.python-version
-
-# --- Conda specific ---
-.condarc
-conda-meta/
-
-# --- Cython / Scientific Python ---
-*.so
-.ipynb_checkpoints
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.ipynb_checkpoints/
 
-# --- Graphics/CV specific ---
-# Si generas archivos de imagen temporales en el procesamiento
-*.jpg
-*.png
+# --- Generated runtime artifacts ---
+# Directory-scoped, not extension-scoped: source images such as
+# python/reconstruction-service/datasheets/*.png and future UI assets
+# in packages/client are legitimate committed files. Only known
+# generated-output directories are ignored, never image extensions
+# globally.
+output/
+**/output/
 *.npy
-!data/  # Mantener solo si tienes una carpeta de datos fuente
+
+# --- Session storage (RNF-07) ---
+# One JSON file per session; keep the directory, ignore its contents.
+data/sessions/*.json
+!data/sessions/.gitkeep
