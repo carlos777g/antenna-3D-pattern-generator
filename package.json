@@ -1,0 +1,13 @@
+{
+  "name": "antenna-3D-pattern-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker compose up --build"
+  },
+  "keywords": [],
+  "author": "carlos777g",
+  "license": "ISC",
+  "packageManager": "pnpm@10.24.0"
+}

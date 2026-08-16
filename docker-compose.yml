@@ -1,0 +1,31 @@
+services:
+  client:
+    build:
+      context: ./packages/client
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: ./packages/server
+    ports:
+      - "3000:3000"
+    environment:
+      - RECONSTRUCTION_SERVICE_URL=http://reconstruction-service:8000
+    depends_on:
+      - reconstruction-service
+    volumes:
+      - ./data:/app/data
+
+  reconstruction-service:
+    build:
+      context: ./python/reconstruction-service
+    ports:
+      - "8000:8000"
+
+# NOTE: this file is a skeleton. Each service's Dockerfile, exposed port, and
+# environment variables are placeholders until that module is scaffolded.
+# A single Dockerfile builds exactly one image; this compose file is what
+# runs the three services together — do not collapse this into one Dockerfile.
