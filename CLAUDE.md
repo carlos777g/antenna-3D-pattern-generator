@@ -32,6 +32,12 @@ data/sessions/{uuid}.json        runtime session storage, gitignored
   documentation are in English, with no exceptions. Do not introduce
   Spanish file names, function names, variable names, or comments,
   even in scratch/debug code.
+- **TypeScript**: `packages/client` and `packages/server` are
+  TypeScript, not JavaScript. This is required for `packages/schema`
+  (the shared data-contract types) to actually prevent drift between
+  the two — an untyped consumer defeats the point of a shared types
+  package. Use strict mode (`"strict": true` in `tsconfig.json`) in
+  both packages.
 - **Package manager**: pnpm only, for every JavaScript package. Never
   generate `package-lock.json` or `yarn.lock`, and never invoke `npm`
   or `yarn` commands.

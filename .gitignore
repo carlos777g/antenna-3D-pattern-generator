@@ -24,6 +24,7 @@ dist/
 build/
 out/
 .next/
+*.tsbuildinfo
 
 # --- Environment / Secrets ---
 .env
