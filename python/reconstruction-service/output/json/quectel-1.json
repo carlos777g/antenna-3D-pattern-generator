@@ -1,1450 +1,1461 @@
 {
-  "source_image": "quectel-1.png",
-  "manufacturer": "quectel",
-  "center_px": {
-    "x": 332,
-    "y": 250
+  "sourceType": "image",
+  "plane": "XY",
+  "metadata": {
+    "provider": "quectel",
+    "antennaType": null,
+    "polarization": null
   },
-  "samples": [
-    {
-      "angle_deg": 0.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 1.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 2.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 3.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 4.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 5.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 6.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 7.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 8.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 9.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 10.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 11.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 12.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 13.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 14.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 15.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 16.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 17.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 18.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 19.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 20.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 21.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 22.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 23.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 24.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 25.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 26.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 27.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 28.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 29.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 30.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 31.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 32.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 33.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 34.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 35.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 36.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 37.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 38.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 39.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 40.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 41.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 42.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 43.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 44.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 45.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 46.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 47.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 48.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 49.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 50.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 51.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 52.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 53.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 54.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 55.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 56.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 57.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 58.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 59.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 60.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 61.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 62.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 63.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 64.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 65.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 66.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 67.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 68.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 69.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 70.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 71.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 72.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 73.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 74.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 75.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 76.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 77.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 78.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 79.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 80.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 81.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 82.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 83.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 84.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 85.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 86.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 87.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 88.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 89.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 90.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 91.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 92.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 93.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 94.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 95.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 96.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 97.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 98.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 99.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 100.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 101.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 102.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 103.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 104.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 105.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 106.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 107.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 108.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 109.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 110.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 111.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 112.0,
-      "magnitude_db": 2.27
-    },
-    {
-      "angle_deg": 113.0,
-      "magnitude_db": 1.7
-    },
-    {
-      "angle_deg": 114.0,
-      "magnitude_db": -1.15
-    },
-    {
-      "angle_deg": 115.0,
-      "magnitude_db": 6.83
-    },
-    {
-      "angle_deg": 116.0,
-      "magnitude_db": -3.43
-    },
-    {
-      "angle_deg": 117.0,
-      "magnitude_db": -0.86
-    },
-    {
-      "angle_deg": 118.0,
-      "magnitude_db": -2.29
-    },
-    {
-      "angle_deg": 119.0,
-      "magnitude_db": 9.4
-    },
-    {
-      "angle_deg": 120.0,
-      "magnitude_db": -4.85
-    },
-    {
-      "angle_deg": 121.0,
-      "magnitude_db": -7.98
-    },
-    {
-      "angle_deg": 122.0,
-      "magnitude_db": -9.12
-    },
-    {
-      "angle_deg": 123.0,
-      "magnitude_db": -9.41
-    },
-    {
-      "angle_deg": 124.0,
-      "magnitude_db": -8.84
-    },
-    {
-      "angle_deg": 125.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 126.0,
-      "magnitude_db": -10.26
-    },
-    {
-      "angle_deg": 127.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 128.0,
-      "magnitude_db": -11.12
-    },
-    {
-      "angle_deg": 129.0,
-      "magnitude_db": -14.54
-    },
-    {
-      "angle_deg": 130.0,
-      "magnitude_db": -11.69
-    },
-    {
-      "angle_deg": 131.0,
-      "magnitude_db": -11.97
-    },
-    {
-      "angle_deg": 132.0,
-      "magnitude_db": -11.97
-    },
-    {
-      "angle_deg": 133.0,
-      "magnitude_db": -11.97
-    },
-    {
-      "angle_deg": 134.0,
-      "magnitude_db": -11.97
-    },
-    {
-      "angle_deg": 135.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 136.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 137.0,
-      "magnitude_db": -11.97
-    },
-    {
-      "angle_deg": 138.0,
-      "magnitude_db": -11.97
-    },
-    {
-      "angle_deg": 139.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 140.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 141.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 142.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 143.0,
-      "magnitude_db": -12.26
-    },
-    {
-      "angle_deg": 144.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 145.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 146.0,
-      "magnitude_db": -12.26
-    },
-    {
-      "angle_deg": 147.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 148.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 149.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 150.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 151.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 152.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 153.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 154.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 155.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 156.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 157.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 158.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 159.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 160.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 161.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 162.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 163.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 164.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 165.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 166.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 167.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 168.0,
-      "magnitude_db": 10.0
-    },
-    {
-      "angle_deg": 169.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 170.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 171.0,
-      "magnitude_db": 9.68
-    },
-    {
-      "angle_deg": 172.0,
-      "magnitude_db": 9.68
-    },
-    {
-      "angle_deg": 173.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 174.0,
-      "magnitude_db": 9.4
-    },
-    {
-      "angle_deg": 175.0,
-      "magnitude_db": 8.83
-    },
-    {
-      "angle_deg": 176.0,
-      "magnitude_db": 8.54
-    },
-    {
-      "angle_deg": 177.0,
-      "magnitude_db": 8.54
-    },
-    {
-      "angle_deg": 178.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 179.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 180.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 181.0,
-      "magnitude_db": 6.83
-    },
-    {
-      "angle_deg": 182.0,
-      "magnitude_db": 6.55
-    },
-    {
-      "angle_deg": 183.0,
-      "magnitude_db": 5.98
-    },
-    {
-      "angle_deg": 184.0,
-      "magnitude_db": 5.69
-    },
-    {
-      "angle_deg": 185.0,
-      "magnitude_db": 5.41
-    },
-    {
-      "angle_deg": 186.0,
-      "magnitude_db": 5.12
-    },
-    {
-      "angle_deg": 187.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 188.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 189.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 190.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 191.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 192.0,
-      "magnitude_db": 2.84
-    },
-    {
-      "angle_deg": 193.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 194.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 195.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 196.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 197.0,
-      "magnitude_db": 1.7
-    },
-    {
-      "angle_deg": 198.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 199.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 200.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 201.0,
-      "magnitude_db": 0.56
-    },
-    {
-      "angle_deg": 202.0,
-      "magnitude_db": -0.01
-    },
-    {
-      "angle_deg": 203.0,
-      "magnitude_db": -0.01
-    },
-    {
-      "angle_deg": 204.0,
-      "magnitude_db": 3.98
-    },
-    {
-      "angle_deg": 205.0,
-      "magnitude_db": -0.86
-    },
-    {
-      "angle_deg": 206.0,
-      "magnitude_db": -1.15
-    },
-    {
-      "angle_deg": 207.0,
-      "magnitude_db": 2.84
-    },
-    {
-      "angle_deg": 208.0,
-      "magnitude_db": -2.29
-    },
-    {
-      "angle_deg": 209.0,
-      "magnitude_db": -15.96
-    },
-    {
-      "angle_deg": 210.0,
-      "magnitude_db": -11.69
-    },
-    {
-      "angle_deg": 211.0,
-      "magnitude_db": 1.99
-    },
-    {
-      "angle_deg": 212.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 213.0,
-      "magnitude_db": 0.28
-    },
-    {
-      "angle_deg": 214.0,
-      "magnitude_db": -0.01
-    },
-    {
-      "angle_deg": 215.0,
-      "magnitude_db": -1.15
-    },
-    {
-      "angle_deg": 216.0,
-      "magnitude_db": -11.4
-    },
-    {
-      "angle_deg": 217.0,
-      "magnitude_db": -8.55
-    },
-    {
-      "angle_deg": 218.0,
-      "magnitude_db": -4.85
-    },
-    {
-      "angle_deg": 219.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 220.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 221.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 222.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 223.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 224.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 225.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 226.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 227.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 228.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 229.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 230.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 231.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 232.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 233.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 234.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 235.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 236.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 237.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 238.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 239.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 240.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 241.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 242.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 243.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 244.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 245.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 246.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 247.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 248.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 249.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 250.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 251.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 252.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 253.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 254.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 255.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 256.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 257.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 258.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 259.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 260.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 261.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 262.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 263.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 264.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 265.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 266.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 267.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 268.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 269.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 270.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 271.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 272.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 273.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 274.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 275.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 276.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 277.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 278.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 279.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 280.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 281.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 282.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 283.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 284.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 285.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 286.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 287.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 288.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 289.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 290.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 291.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 292.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 293.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 294.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 295.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 296.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 297.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 298.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 299.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 300.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 301.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 302.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 303.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 304.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 305.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 306.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 307.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 308.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 309.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 310.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 311.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 312.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 313.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 314.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 315.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 316.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 317.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 318.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 319.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 320.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 321.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 322.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 323.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 324.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 325.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 326.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 327.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 328.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 329.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 330.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 331.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 332.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 333.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 334.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 335.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 336.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 337.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 338.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 339.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 340.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 341.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 342.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 343.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 344.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 345.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 346.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 347.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 348.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 349.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 350.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 351.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 352.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 353.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 354.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 355.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 356.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 357.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 358.0,
-      "magnitude_db": null
-    },
-    {
-      "angle_deg": 359.0,
-      "magnitude_db": null
+  "reconstructionMethod": null,
+  "views": [
+    {
+      "plane": "XY",
+      "pattern": [
+        {
+          "angleDeg": 0.0,
+          "magnitudeDb": -6.72
+        },
+        {
+          "angleDeg": 1.0,
+          "magnitudeDb": -7.07
+        },
+        {
+          "angleDeg": 2.0,
+          "magnitudeDb": -6.72
+        },
+        {
+          "angleDeg": 3.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 4.0,
+          "magnitudeDb": -6.72
+        },
+        {
+          "angleDeg": 5.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 6.0,
+          "magnitudeDb": -6.55
+        },
+        {
+          "angleDeg": 7.0,
+          "magnitudeDb": -6.21
+        },
+        {
+          "angleDeg": 8.0,
+          "magnitudeDb": -6.21
+        },
+        {
+          "angleDeg": 9.0,
+          "magnitudeDb": -6.03
+        },
+        {
+          "angleDeg": 10.0,
+          "magnitudeDb": -5.86
+        },
+        {
+          "angleDeg": 11.0,
+          "magnitudeDb": -5.86
+        },
+        {
+          "angleDeg": 12.0,
+          "magnitudeDb": -6.03
+        },
+        {
+          "angleDeg": 13.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 14.0,
+          "magnitudeDb": -7.59
+        },
+        {
+          "angleDeg": 15.0,
+          "magnitudeDb": -7.41
+        },
+        {
+          "angleDeg": 16.0,
+          "magnitudeDb": -7.24
+        },
+        {
+          "angleDeg": 17.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 18.0,
+          "magnitudeDb": -5.17
+        },
+        {
+          "angleDeg": 19.0,
+          "magnitudeDb": -4.83
+        },
+        {
+          "angleDeg": 20.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 21.0,
+          "magnitudeDb": -4.83
+        },
+        {
+          "angleDeg": 22.0,
+          "magnitudeDb": -5.0
+        },
+        {
+          "angleDeg": 23.0,
+          "magnitudeDb": -5.0
+        },
+        {
+          "angleDeg": 24.0,
+          "magnitudeDb": -5.17
+        },
+        {
+          "angleDeg": 25.0,
+          "magnitudeDb": -5.25
+        },
+        {
+          "angleDeg": 26.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 27.0,
+          "magnitudeDb": -4.66
+        },
+        {
+          "angleDeg": 28.0,
+          "magnitudeDb": -4.83
+        },
+        {
+          "angleDeg": 29.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 30.0,
+          "magnitudeDb": -4.83
+        },
+        {
+          "angleDeg": 31.0,
+          "magnitudeDb": -4.83
+        },
+        {
+          "angleDeg": 32.0,
+          "magnitudeDb": -5.08
+        },
+        {
+          "angleDeg": 33.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 34.0,
+          "magnitudeDb": -5.0
+        },
+        {
+          "angleDeg": 35.0,
+          "magnitudeDb": -6.55
+        },
+        {
+          "angleDeg": 36.0,
+          "magnitudeDb": -6.55
+        },
+        {
+          "angleDeg": 37.0,
+          "magnitudeDb": -6.55
+        },
+        {
+          "angleDeg": 38.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 39.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 40.0,
+          "magnitudeDb": -5.52
+        },
+        {
+          "angleDeg": 41.0,
+          "magnitudeDb": -6.03
+        },
+        {
+          "angleDeg": 42.0,
+          "magnitudeDb": -7.41
+        },
+        {
+          "angleDeg": 43.0,
+          "magnitudeDb": -7.24
+        },
+        {
+          "angleDeg": 44.0,
+          "magnitudeDb": -6.03
+        },
+        {
+          "angleDeg": 45.0,
+          "magnitudeDb": -7.59
+        },
+        {
+          "angleDeg": 46.0,
+          "magnitudeDb": -7.59
+        },
+        {
+          "angleDeg": 47.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 48.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 49.0,
+          "magnitudeDb": -6.72
+        },
+        {
+          "angleDeg": 50.0,
+          "magnitudeDb": -7.41
+        },
+        {
+          "angleDeg": 51.0,
+          "magnitudeDb": -7.07
+        },
+        {
+          "angleDeg": 52.0,
+          "magnitudeDb": -7.07
+        },
+        {
+          "angleDeg": 53.0,
+          "magnitudeDb": -7.41
+        },
+        {
+          "angleDeg": 54.0,
+          "magnitudeDb": -8.79
+        },
+        {
+          "angleDeg": 55.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 56.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 57.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 58.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 59.0,
+          "magnitudeDb": -8.1
+        },
+        {
+          "angleDeg": 60.0,
+          "magnitudeDb": -8.45
+        },
+        {
+          "angleDeg": 61.0,
+          "magnitudeDb": -11.03
+        },
+        {
+          "angleDeg": 62.0,
+          "magnitudeDb": -12.24
+        },
+        {
+          "angleDeg": 63.0,
+          "magnitudeDb": -12.76
+        },
+        {
+          "angleDeg": 64.0,
+          "magnitudeDb": -8.97
+        },
+        {
+          "angleDeg": 65.0,
+          "magnitudeDb": -8.62
+        },
+        {
+          "angleDeg": 66.0,
+          "magnitudeDb": -8.97
+        },
+        {
+          "angleDeg": 67.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 68.0,
+          "magnitudeDb": -19.14
+        },
+        {
+          "angleDeg": 69.0,
+          "magnitudeDb": -20.0
+        },
+        {
+          "angleDeg": 70.0,
+          "magnitudeDb": -20.86
+        },
+        {
+          "angleDeg": 71.0,
+          "magnitudeDb": -10.69
+        },
+        {
+          "angleDeg": 72.0,
+          "magnitudeDb": -10.52
+        },
+        {
+          "angleDeg": 73.0,
+          "magnitudeDb": -10.34
+        },
+        {
+          "angleDeg": 74.0,
+          "magnitudeDb": -10.86
+        },
+        {
+          "angleDeg": 75.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 76.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 77.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 78.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 79.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 80.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 81.0,
+          "magnitudeDb": -26.38
+        },
+        {
+          "angleDeg": 82.0,
+          "magnitudeDb": -26.38
+        },
+        {
+          "angleDeg": 83.0,
+          "magnitudeDb": -26.03
+        },
+        {
+          "angleDeg": 84.0,
+          "magnitudeDb": -12.24
+        },
+        {
+          "angleDeg": 85.0,
+          "magnitudeDb": -11.9
+        },
+        {
+          "angleDeg": 86.0,
+          "magnitudeDb": -12.24
+        },
+        {
+          "angleDeg": 87.0,
+          "magnitudeDb": -11.9
+        },
+        {
+          "angleDeg": 88.0,
+          "magnitudeDb": -12.24
+        },
+        {
+          "angleDeg": 89.0,
+          "magnitudeDb": -11.9
+        },
+        {
+          "angleDeg": 90.0,
+          "magnitudeDb": -12.07
+        },
+        {
+          "angleDeg": 91.0,
+          "magnitudeDb": -11.9
+        },
+        {
+          "angleDeg": 92.0,
+          "magnitudeDb": -12.59
+        },
+        {
+          "angleDeg": 93.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 94.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 95.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 96.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 97.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 98.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 99.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 100.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 101.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 102.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 103.0,
+          "magnitudeDb": null
+        },
+        {
+          "angleDeg": 104.0,
+          "magnitudeDb": -11.55
+        },
+        {
+          "angleDeg": 105.0,
+          "magnitudeDb": -11.03
+        },
+        {
+          "angleDeg": 106.0,
+          "magnitudeDb": -10.52
+        },
+        {
+          "angleDeg": 107.0,
+          "magnitudeDb": -10.69
+        },
+        {
+          "angleDeg": 108.0,
+          "magnitudeDb": -10.52
+        },
+        {
+          "angleDeg": 109.0,
+          "magnitudeDb": -10.0
+        },
+        {
+          "angleDeg": 110.0,
+          "magnitudeDb": -10.17
+        },
+        {
+          "angleDeg": 111.0,
+          "magnitudeDb": -10.34
+        },
+        {
+          "angleDeg": 112.0,
+          "magnitudeDb": -17.93
+        },
+        {
+          "angleDeg": 113.0,
+          "magnitudeDb": -17.41
+        },
+        {
+          "angleDeg": 114.0,
+          "magnitudeDb": -17.59
+        },
+        {
+          "angleDeg": 115.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 116.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 117.0,
+          "magnitudeDb": -8.97
+        },
+        {
+          "angleDeg": 118.0,
+          "magnitudeDb": -8.97
+        },
+        {
+          "angleDeg": 119.0,
+          "magnitudeDb": -8.79
+        },
+        {
+          "angleDeg": 120.0,
+          "magnitudeDb": -8.62
+        },
+        {
+          "angleDeg": 121.0,
+          "magnitudeDb": -8.45
+        },
+        {
+          "angleDeg": 122.0,
+          "magnitudeDb": -8.62
+        },
+        {
+          "angleDeg": 123.0,
+          "magnitudeDb": -8.28
+        },
+        {
+          "angleDeg": 124.0,
+          "magnitudeDb": -8.28
+        },
+        {
+          "angleDeg": 125.0,
+          "magnitudeDb": -8.28
+        },
+        {
+          "angleDeg": 126.0,
+          "magnitudeDb": -8.28
+        },
+        {
+          "angleDeg": 127.0,
+          "magnitudeDb": -8.28
+        },
+        {
+          "angleDeg": 128.0,
+          "magnitudeDb": -8.45
+        },
+        {
+          "angleDeg": 129.0,
+          "magnitudeDb": -10.86
+        },
+        {
+          "angleDeg": 130.0,
+          "magnitudeDb": -13.28
+        },
+        {
+          "angleDeg": 131.0,
+          "magnitudeDb": -7.93
+        },
+        {
+          "angleDeg": 132.0,
+          "magnitudeDb": -7.93
+        },
+        {
+          "angleDeg": 133.0,
+          "magnitudeDb": -7.84
+        },
+        {
+          "angleDeg": 134.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 135.0,
+          "magnitudeDb": -7.67
+        },
+        {
+          "angleDeg": 136.0,
+          "magnitudeDb": -7.59
+        },
+        {
+          "angleDeg": 137.0,
+          "magnitudeDb": -7.24
+        },
+        {
+          "angleDeg": 138.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 139.0,
+          "magnitudeDb": -9.01
+        },
+        {
+          "angleDeg": 140.0,
+          "magnitudeDb": -10.26
+        },
+        {
+          "angleDeg": 141.0,
+          "magnitudeDb": -11.51
+        },
+        {
+          "angleDeg": 142.0,
+          "magnitudeDb": -12.76
+        },
+        {
+          "angleDeg": 143.0,
+          "magnitudeDb": -12.59
+        },
+        {
+          "angleDeg": 144.0,
+          "magnitudeDb": -12.24
+        },
+        {
+          "angleDeg": 145.0,
+          "magnitudeDb": -12.07
+        },
+        {
+          "angleDeg": 146.0,
+          "magnitudeDb": -12.07
+        },
+        {
+          "angleDeg": 147.0,
+          "magnitudeDb": -11.9
+        },
+        {
+          "angleDeg": 148.0,
+          "magnitudeDb": -11.9
+        },
+        {
+          "angleDeg": 149.0,
+          "magnitudeDb": -11.72
+        },
+        {
+          "angleDeg": 150.0,
+          "magnitudeDb": -11.55
+        },
+        {
+          "angleDeg": 151.0,
+          "magnitudeDb": -11.55
+        },
+        {
+          "angleDeg": 152.0,
+          "magnitudeDb": -11.38
+        },
+        {
+          "angleDeg": 153.0,
+          "magnitudeDb": -11.21
+        },
+        {
+          "angleDeg": 154.0,
+          "magnitudeDb": -11.03
+        },
+        {
+          "angleDeg": 155.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 156.0,
+          "magnitudeDb": -5.17
+        },
+        {
+          "angleDeg": 157.0,
+          "magnitudeDb": -5.86
+        },
+        {
+          "angleDeg": 158.0,
+          "magnitudeDb": -10.17
+        },
+        {
+          "angleDeg": 159.0,
+          "magnitudeDb": -10.0
+        },
+        {
+          "angleDeg": 160.0,
+          "magnitudeDb": -4.66
+        },
+        {
+          "angleDeg": 161.0,
+          "magnitudeDb": -4.48
+        },
+        {
+          "angleDeg": 162.0,
+          "magnitudeDb": -9.48
+        },
+        {
+          "angleDeg": 163.0,
+          "magnitudeDb": -8.97
+        },
+        {
+          "angleDeg": 164.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 165.0,
+          "magnitudeDb": -8.79
+        },
+        {
+          "angleDeg": 166.0,
+          "magnitudeDb": -8.97
+        },
+        {
+          "angleDeg": 167.0,
+          "magnitudeDb": -8.37
+        },
+        {
+          "angleDeg": 168.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 169.0,
+          "magnitudeDb": -3.45
+        },
+        {
+          "angleDeg": 170.0,
+          "magnitudeDb": -7.41
+        },
+        {
+          "angleDeg": 171.0,
+          "magnitudeDb": -7.07
+        },
+        {
+          "angleDeg": 172.0,
+          "magnitudeDb": -6.9
+        },
+        {
+          "angleDeg": 173.0,
+          "magnitudeDb": -6.55
+        },
+        {
+          "angleDeg": 174.0,
+          "magnitudeDb": -2.76
+        },
+        {
+          "angleDeg": 175.0,
+          "magnitudeDb": -2.93
+        },
+        {
+          "angleDeg": 176.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 177.0,
+          "magnitudeDb": -2.93
+        },
+        {
+          "angleDeg": 178.0,
+          "magnitudeDb": -2.93
+        },
+        {
+          "angleDeg": 179.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 180.0,
+          "magnitudeDb": -1.9
+        },
+        {
+          "angleDeg": 181.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 182.0,
+          "magnitudeDb": -5.17
+        },
+        {
+          "angleDeg": 183.0,
+          "magnitudeDb": -5.0
+        },
+        {
+          "angleDeg": 184.0,
+          "magnitudeDb": -4.66
+        },
+        {
+          "angleDeg": 185.0,
+          "magnitudeDb": -5.0
+        },
+        {
+          "angleDeg": 186.0,
+          "magnitudeDb": -4.86
+        },
+        {
+          "angleDeg": 187.0,
+          "magnitudeDb": -4.71
+        },
+        {
+          "angleDeg": 188.0,
+          "magnitudeDb": -4.57
+        },
+        {
+          "angleDeg": 189.0,
+          "magnitudeDb": -4.43
+        },
+        {
+          "angleDeg": 190.0,
+          "magnitudeDb": -4.28
+        },
+        {
+          "angleDeg": 191.0,
+          "magnitudeDb": -4.14
+        },
+        {
+          "angleDeg": 192.0,
+          "magnitudeDb": -3.97
+        },
+        {
+          "angleDeg": 193.0,
+          "magnitudeDb": -4.14
+        },
+        {
+          "angleDeg": 194.0,
+          "magnitudeDb": -3.97
+        },
+        {
+          "angleDeg": 195.0,
+          "magnitudeDb": -3.79
+        },
+        {
+          "angleDeg": 196.0,
+          "magnitudeDb": -2.41
+        },
+        {
+          "angleDeg": 197.0,
+          "magnitudeDb": -1.03
+        },
+        {
+          "angleDeg": 198.0,
+          "magnitudeDb": -1.03
+        },
+        {
+          "angleDeg": 199.0,
+          "magnitudeDb": -1.21
+        },
+        {
+          "angleDeg": 200.0,
+          "magnitudeDb": -1.03
+        },
+        {
+          "angleDeg": 201.0,
+          "magnitudeDb": -1.03
+        },
+        {
+          "angleDeg": 202.0,
+          "magnitudeDb": -0.86
+        },
+        {
+          "angleDeg": 203.0,
+          "magnitudeDb": -0.86
+        },
+        {
+          "angleDeg": 204.0,
+          "magnitudeDb": -0.69
+        },
+        {
+          "angleDeg": 205.0,
+          "magnitudeDb": -0.69
+        },
+        {
+          "angleDeg": 206.0,
+          "magnitudeDb": -1.21
+        },
+        {
+          "angleDeg": 207.0,
+          "magnitudeDb": -1.03
+        },
+        {
+          "angleDeg": 208.0,
+          "magnitudeDb": -0.86
+        },
+        {
+          "angleDeg": 209.0,
+          "magnitudeDb": -0.69
+        },
+        {
+          "angleDeg": 210.0,
+          "magnitudeDb": -3.28
+        },
+        {
+          "angleDeg": 211.0,
+          "magnitudeDb": -2.87
+        },
+        {
+          "angleDeg": 212.0,
+          "magnitudeDb": -2.45
+        },
+        {
+          "angleDeg": 213.0,
+          "magnitudeDb": -2.04
+        },
+        {
+          "angleDeg": 214.0,
+          "magnitudeDb": -1.62
+        },
+        {
+          "angleDeg": 215.0,
+          "magnitudeDb": -1.21
+        },
+        {
+          "angleDeg": 216.0,
+          "magnitudeDb": -1.03
+        },
+        {
+          "angleDeg": 217.0,
+          "magnitudeDb": -1.16
+        },
+        {
+          "angleDeg": 218.0,
+          "magnitudeDb": -1.29
+        },
+        {
+          "angleDeg": 219.0,
+          "magnitudeDb": -1.42
+        },
+        {
+          "angleDeg": 220.0,
+          "magnitudeDb": -1.55
+        },
+        {
+          "angleDeg": 221.0,
+          "magnitudeDb": -1.03
+        },
+        {
+          "angleDeg": 222.0,
+          "magnitudeDb": -1.2
+        },
+        {
+          "angleDeg": 223.0,
+          "magnitudeDb": -1.38
+        },
+        {
+          "angleDeg": 224.0,
+          "magnitudeDb": -1.55
+        },
+        {
+          "angleDeg": 225.0,
+          "magnitudeDb": -1.72
+        },
+        {
+          "angleDeg": 226.0,
+          "magnitudeDb": -1.55
+        },
+        {
+          "angleDeg": 227.0,
+          "magnitudeDb": -1.38
+        },
+        {
+          "angleDeg": 228.0,
+          "magnitudeDb": -1.72
+        },
+        {
+          "angleDeg": 229.0,
+          "magnitudeDb": -4.66
+        },
+        {
+          "angleDeg": 230.0,
+          "magnitudeDb": -1.72
+        },
+        {
+          "angleDeg": 231.0,
+          "magnitudeDb": -1.72
+        },
+        {
+          "angleDeg": 232.0,
+          "magnitudeDb": -1.72
+        },
+        {
+          "angleDeg": 233.0,
+          "magnitudeDb": -2.24
+        },
+        {
+          "angleDeg": 234.0,
+          "magnitudeDb": -5.17
+        },
+        {
+          "angleDeg": 235.0,
+          "magnitudeDb": -2.07
+        },
+        {
+          "angleDeg": 236.0,
+          "magnitudeDb": -2.07
+        },
+        {
+          "angleDeg": 237.0,
+          "magnitudeDb": -2.07
+        },
+        {
+          "angleDeg": 238.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 239.0,
+          "magnitudeDb": -5.34
+        },
+        {
+          "angleDeg": 240.0,
+          "magnitudeDb": -5.43
+        },
+        {
+          "angleDeg": 241.0,
+          "magnitudeDb": -5.52
+        },
+        {
+          "angleDeg": 242.0,
+          "magnitudeDb": -5.52
+        },
+        {
+          "angleDeg": 243.0,
+          "magnitudeDb": -5.52
+        },
+        {
+          "angleDeg": 244.0,
+          "magnitudeDb": -5.69
+        },
+        {
+          "angleDeg": 245.0,
+          "magnitudeDb": -6.03
+        },
+        {
+          "angleDeg": 246.0,
+          "magnitudeDb": -6.29
+        },
+        {
+          "angleDeg": 247.0,
+          "magnitudeDb": -6.55
+        },
+        {
+          "angleDeg": 248.0,
+          "magnitudeDb": -3.45
+        },
+        {
+          "angleDeg": 249.0,
+          "magnitudeDb": -3.62
+        },
+        {
+          "angleDeg": 250.0,
+          "magnitudeDb": -3.71
+        },
+        {
+          "angleDeg": 251.0,
+          "magnitudeDb": -3.79
+        },
+        {
+          "angleDeg": 252.0,
+          "magnitudeDb": -4.31
+        },
+        {
+          "angleDeg": 253.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 254.0,
+          "magnitudeDb": -7.59
+        },
+        {
+          "angleDeg": 255.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 256.0,
+          "magnitudeDb": -7.93
+        },
+        {
+          "angleDeg": 257.0,
+          "magnitudeDb": -8.45
+        },
+        {
+          "angleDeg": 258.0,
+          "magnitudeDb": -7.79
+        },
+        {
+          "angleDeg": 259.0,
+          "magnitudeDb": -7.14
+        },
+        {
+          "angleDeg": 260.0,
+          "magnitudeDb": -6.48
+        },
+        {
+          "angleDeg": 261.0,
+          "magnitudeDb": -5.83
+        },
+        {
+          "angleDeg": 262.0,
+          "magnitudeDb": -5.17
+        },
+        {
+          "angleDeg": 263.0,
+          "magnitudeDb": -9.66
+        },
+        {
+          "angleDeg": 264.0,
+          "magnitudeDb": -9.48
+        },
+        {
+          "angleDeg": 265.0,
+          "magnitudeDb": -9.48
+        },
+        {
+          "angleDeg": 266.0,
+          "magnitudeDb": -5.69
+        },
+        {
+          "angleDeg": 267.0,
+          "magnitudeDb": -6.03
+        },
+        {
+          "angleDeg": 268.0,
+          "magnitudeDb": -5.69
+        },
+        {
+          "angleDeg": 269.0,
+          "magnitudeDb": -6.03
+        },
+        {
+          "angleDeg": 270.0,
+          "magnitudeDb": -6.55
+        },
+        {
+          "angleDeg": 271.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 272.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 273.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 274.0,
+          "magnitudeDb": -6.72
+        },
+        {
+          "angleDeg": 275.0,
+          "magnitudeDb": -6.38
+        },
+        {
+          "angleDeg": 276.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 277.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 278.0,
+          "magnitudeDb": -10.52
+        },
+        {
+          "angleDeg": 279.0,
+          "magnitudeDb": -11.9
+        },
+        {
+          "angleDeg": 280.0,
+          "magnitudeDb": -11.55
+        },
+        {
+          "angleDeg": 281.0,
+          "magnitudeDb": -12.07
+        },
+        {
+          "angleDeg": 282.0,
+          "magnitudeDb": -10.09
+        },
+        {
+          "angleDeg": 283.0,
+          "magnitudeDb": -8.1
+        },
+        {
+          "angleDeg": 284.0,
+          "magnitudeDb": -7.93
+        },
+        {
+          "angleDeg": 285.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 286.0,
+          "magnitudeDb": -8.1
+        },
+        {
+          "angleDeg": 287.0,
+          "magnitudeDb": -12.41
+        },
+        {
+          "angleDeg": 288.0,
+          "magnitudeDb": -10.09
+        },
+        {
+          "angleDeg": 289.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 290.0,
+          "magnitudeDb": -7.93
+        },
+        {
+          "angleDeg": 291.0,
+          "magnitudeDb": -8.1
+        },
+        {
+          "angleDeg": 292.0,
+          "magnitudeDb": -8.62
+        },
+        {
+          "angleDeg": 293.0,
+          "magnitudeDb": -12.93
+        },
+        {
+          "angleDeg": 294.0,
+          "magnitudeDb": -13.1
+        },
+        {
+          "angleDeg": 295.0,
+          "magnitudeDb": -13.28
+        },
+        {
+          "angleDeg": 296.0,
+          "magnitudeDb": -13.1
+        },
+        {
+          "angleDeg": 297.0,
+          "magnitudeDb": -13.1
+        },
+        {
+          "angleDeg": 298.0,
+          "magnitudeDb": -8.79
+        },
+        {
+          "angleDeg": 299.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 300.0,
+          "magnitudeDb": -11.46
+        },
+        {
+          "angleDeg": 301.0,
+          "magnitudeDb": -13.79
+        },
+        {
+          "angleDeg": 302.0,
+          "magnitudeDb": -9.31
+        },
+        {
+          "angleDeg": 303.0,
+          "magnitudeDb": -9.48
+        },
+        {
+          "angleDeg": 304.0,
+          "magnitudeDb": -9.48
+        },
+        {
+          "angleDeg": 305.0,
+          "magnitudeDb": -14.48
+        },
+        {
+          "angleDeg": 306.0,
+          "magnitudeDb": -10.52
+        },
+        {
+          "angleDeg": 307.0,
+          "magnitudeDb": -10.52
+        },
+        {
+          "angleDeg": 308.0,
+          "magnitudeDb": -10.69
+        },
+        {
+          "angleDeg": 309.0,
+          "magnitudeDb": -11.03
+        },
+        {
+          "angleDeg": 310.0,
+          "magnitudeDb": -11.03
+        },
+        {
+          "angleDeg": 311.0,
+          "magnitudeDb": -11.38
+        },
+        {
+          "angleDeg": 312.0,
+          "magnitudeDb": -16.21
+        },
+        {
+          "angleDeg": 313.0,
+          "magnitudeDb": -16.55
+        },
+        {
+          "angleDeg": 314.0,
+          "magnitudeDb": -12.07
+        },
+        {
+          "angleDeg": 315.0,
+          "magnitudeDb": -12.07
+        },
+        {
+          "angleDeg": 316.0,
+          "magnitudeDb": -12.41
+        },
+        {
+          "angleDeg": 317.0,
+          "magnitudeDb": -12.76
+        },
+        {
+          "angleDeg": 318.0,
+          "magnitudeDb": -13.1
+        },
+        {
+          "angleDeg": 319.0,
+          "magnitudeDb": -13.1
+        },
+        {
+          "angleDeg": 320.0,
+          "magnitudeDb": -13.28
+        },
+        {
+          "angleDeg": 321.0,
+          "magnitudeDb": -18.1
+        },
+        {
+          "angleDeg": 322.0,
+          "magnitudeDb": -13.62
+        },
+        {
+          "angleDeg": 323.0,
+          "magnitudeDb": -13.45
+        },
+        {
+          "angleDeg": 324.0,
+          "magnitudeDb": -13.79
+        },
+        {
+          "angleDeg": 325.0,
+          "magnitudeDb": -14.14
+        },
+        {
+          "angleDeg": 326.0,
+          "magnitudeDb": -14.14
+        },
+        {
+          "angleDeg": 327.0,
+          "magnitudeDb": -14.31
+        },
+        {
+          "angleDeg": 328.0,
+          "magnitudeDb": -14.66
+        },
+        {
+          "angleDeg": 329.0,
+          "magnitudeDb": -15.42
+        },
+        {
+          "angleDeg": 330.0,
+          "magnitudeDb": -16.18
+        },
+        {
+          "angleDeg": 331.0,
+          "magnitudeDb": -16.93
+        },
+        {
+          "angleDeg": 332.0,
+          "magnitudeDb": -17.69
+        },
+        {
+          "angleDeg": 333.0,
+          "magnitudeDb": -18.45
+        },
+        {
+          "angleDeg": 334.0,
+          "magnitudeDb": -18.45
+        },
+        {
+          "angleDeg": 335.0,
+          "magnitudeDb": -18.28
+        },
+        {
+          "angleDeg": 336.0,
+          "magnitudeDb": -17.93
+        },
+        {
+          "angleDeg": 337.0,
+          "magnitudeDb": -17.76
+        },
+        {
+          "angleDeg": 338.0,
+          "magnitudeDb": -17.59
+        },
+        {
+          "angleDeg": 339.0,
+          "magnitudeDb": -17.41
+        },
+        {
+          "angleDeg": 340.0,
+          "magnitudeDb": -17.07
+        },
+        {
+          "angleDeg": 341.0,
+          "magnitudeDb": -16.9
+        },
+        {
+          "angleDeg": 342.0,
+          "magnitudeDb": -16.72
+        },
+        {
+          "angleDeg": 343.0,
+          "magnitudeDb": -16.32
+        },
+        {
+          "angleDeg": 344.0,
+          "magnitudeDb": -15.92
+        },
+        {
+          "angleDeg": 345.0,
+          "magnitudeDb": -15.52
+        },
+        {
+          "angleDeg": 346.0,
+          "magnitudeDb": -15.17
+        },
+        {
+          "angleDeg": 347.0,
+          "magnitudeDb": -14.83
+        },
+        {
+          "angleDeg": 348.0,
+          "magnitudeDb": -14.31
+        },
+        {
+          "angleDeg": 349.0,
+          "magnitudeDb": -13.62
+        },
+        {
+          "angleDeg": 350.0,
+          "magnitudeDb": -13.62
+        },
+        {
+          "angleDeg": 351.0,
+          "magnitudeDb": -13.1
+        },
+        {
+          "angleDeg": 352.0,
+          "magnitudeDb": -9.31
+        },
+        {
+          "angleDeg": 353.0,
+          "magnitudeDb": -8.97
+        },
+        {
+          "angleDeg": 354.0,
+          "magnitudeDb": -9.14
+        },
+        {
+          "angleDeg": 355.0,
+          "magnitudeDb": -8.45
+        },
+        {
+          "angleDeg": 356.0,
+          "magnitudeDb": -8.1
+        },
+        {
+          "angleDeg": 357.0,
+          "magnitudeDb": -7.76
+        },
+        {
+          "angleDeg": 358.0,
+          "magnitudeDb": -7.07
+        },
+        {
+          "angleDeg": 359.0,
+          "magnitudeDb": -7.41
+        }
+      ]
     }
-  ]
+  ],
+  "computed": {
+    "directivityDb": null,
+    "efficiency": null
+  }
 }
