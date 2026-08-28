@@ -1,10 +1,12 @@
-import cv2
+# ring_mask_extractor.py
 import numpy as np
+
+from modules.rgb_range import apply_rgb_range
 
 
 def extract_ring_mask(img_rgb: np.ndarray, circle_color_range: dict) -> np.ndarray:
     """
-    Isolate pixels matching the concentric ring color range.
+    Isolate pixels matching the concentric ring (graticule) color range.
 
     Returns
     -------
@@ -12,17 +14,4 @@ def extract_ring_mask(img_rgb: np.ndarray, circle_color_range: dict) -> np.ndarr
         255 = ring-colored pixel
         0   = everything else
     """
-    r = img_rgb[:, :, 0]
-    g = img_rgb[:, :, 1]
-    b = img_rgb[:, :, 2]
-
-    match = (
-        (r >= circle_color_range["r_min"]) & (r <= circle_color_range["r_max"]) &
-        (g >= circle_color_range["g_min"]) & (g <= circle_color_range["g_max"]) &
-        (b >= circle_color_range["b_min"]) & (b <= circle_color_range["b_max"])
-    )
-
-    ring_mask = np.zeros(r.shape, dtype=np.uint8)
-    ring_mask[match] = 255
-
-    return ring_mask
+    return apply_rgb_range(img_rgb, circle_color_range)

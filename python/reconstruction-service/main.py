@@ -1,184 +1,82 @@
 # main.py
-import cv2
-import numpy as np
-from pathlib import Path
-from config.manufacturer_config import get_manufacturer_config
-from modules.image_loader import load_image_rgb
-from modules.pattern_mask import extract_pattern_mask
-from modules.ring_mask_extractor import extract_ring_mask
-from modules.center_detector import detect_center
-from modules.outer_ring_detector import detect_outer_ring
+"""
+CLI entry point for the radiation pattern extraction pipeline.
 
-# ------------------------------------------------------------
-# DEBUG FLAG
-# Set to True to write intermediate images for STEP 3 modules.
-# ------------------------------------------------------------
-DEBUG_STEPS = True
+Run the whole calibrated queue:
+    python main.py
 
-# ------------------------------------------------------------
-# PROCESSING QUEUE
-# Each entry: (image_path, manufacturer_key)
-# ------------------------------------------------------------
-PROCESSING_QUEUE = [
-    ("datasheets/taoglas-1.png",        "taoglas"),
-    ("datasheets/rf-elements-1.png",    "rf_elements"),
-    ("datasheets/molex-1.png",          "molex"),
-    ("datasheets/alpha-wireless-1.png", "alpha_wireless"),
-    ("datasheets/quectel-1.png",        "quectel"),
-]
+Run a single image:
+    python main.py --image datasheets/taoglas-1.png --manufacturer taoglas --plane XZ
+"""
+import argparse
+import logging
+import sys
 
-# ------------------------------------------------------------
-# OUTPUT PATHS
-# ------------------------------------------------------------
-OUTPUT_IMAGES_DIR       = Path("output/images")
-OUTPUT_JSON_DIR         = Path("output/json")
-OUTPUT_DEBUG_RINGMASK   = Path("output/debug/ring_mask")
-OUTPUT_DEBUG_CENTER     = Path("output/debug/center_overlay")
-OUTPUT_DEBUG_OUTER      = Path("output/debug/outer_ring_overlay")
+from pipeline import DEFAULT_OUTPUT_DIR, PROCESSING_QUEUE, run_pipeline
+from modules.result_writer import VALID_PLANES
 
 
-def create_output_dirs() -> None:
-    for path in [
-        OUTPUT_IMAGES_DIR,
-        OUTPUT_JSON_DIR,
-        OUTPUT_DEBUG_RINGMASK,
-        OUTPUT_DEBUG_CENTER,
-        OUTPUT_DEBUG_OUTER,
-    ]:
-        path.mkdir(parents=True, exist_ok=True)
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Extract 2D polar radiation patterns from datasheet images.",
+    )
+    parser.add_argument(
+        "--image",
+        help="Path to a single image to process. Relative paths resolve "
+             "against the service directory, not the working directory.",
+    )
+    parser.add_argument(
+        "--manufacturer",
+        help="Manufacturer config key. Required with --image.",
+    )
+    parser.add_argument(
+        "--plane",
+        choices=sorted(VALID_PLANES),
+        help="Cut plane of the datasheet image. Required with --image.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=str(DEFAULT_OUTPUT_DIR),
+        help="Directory to write results into (default: %(default)s).",
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable debug logging and write intermediate overlay images.",
+    )
+    return parser
 
 
-def process_single_image(image_path: str, manufacturer: str) -> dict:
-    config = get_manufacturer_config(manufacturer)
-    stem = Path(image_path).stem
-    warnings = []
+def main(argv: list[str] | None = None) -> int:
+    parser = build_arg_parser()
+    args = parser.parse_args(argv)
 
-    # -- STEP 1: Load --
-    img_rgb = load_image_rgb(image_path)
-    ## Structural propieties on matriz (uncomment next line if wanna see)
-    # print(f"  [1] loaded: {img_rgb.shape} dtype={img_rgb.dtype}") 
+    logging.basicConfig(
+        level=logging.DEBUG if args.debug else logging.INFO,
+        format="%(levelname)s %(message)s",
+    )
 
+    if args.image:
+        if not args.manufacturer or not args.plane:
+            parser.error("--image requires both --manufacturer and --plane")
+        entries = [{
+            "image": args.image,
+            "manufacturer": args.manufacturer,
+            "plane": args.plane,
+        }]
+    else:
+        if args.manufacturer or args.plane:
+            parser.error("--manufacturer and --plane are only valid with --image")
+        entries = PROCESSING_QUEUE
 
-    # -- STEP 2: Pattern mask --
-    mask, mask_stats = extract_pattern_mask(img_rgb, config["rgb_range"])
-    ## Uncomment next lines if wanna see the amount of pattern pixels against the total pixels from the image
-    # print(f"  [2] pattern_ratio: {mask_stats['pattern_ratio']:.2%} "
-    #       f"({mask_stats['pattern_pixels']}/{mask_stats['total_pixels']} px)")
-    # if mask_stats["pattern_ratio"] < 0.001:
-    #     warnings.append("pattern_ratio below 0.1%: rgb_range may be too narrow.")
+    results = run_pipeline(entries, output_dir=args.output_dir, debug=args.debug)
 
-
-    # -- STEP 3a: Ring mask --
-    ring_mask = extract_ring_mask(img_rgb, config["circle_color_range"])
-    ## Uncomment next lines if wanna see the amount of ring pixels and wanna output the images on ./output/debug/ring_mask
-    # ring_pixel_count = int(np.sum(ring_mask > 0))
-    # print(f"  [3a] ring_mask active pixels: {ring_pixel_count}")
-    # if ring_pixel_count == 0:
-    #     warnings.append("ring_mask is empty: circle_color_range may be incorrect.")
-    # if DEBUG_STEPS:
-    #     debug_path = OUTPUT_DEBUG_RINGMASK / f"{stem}.png"
-    #     cv2.imwrite(str(debug_path), ring_mask)
-    #     print(f"  [3a] debug image saved: {debug_path}")
-
-
-    # -- STEP 3b: Center detection --
-    center = detect_center(ring_mask, center_method=config["center_method"], hough_min_radius=config["hough_min_radius"], hough_max_radius=config["hough_max_radius"])
-    ## Uncomment next lines if wanna see the output images that shows the found center in each one
-    # print(f"  [3b] center: {center}")
-    # if center is None:
-    #     warnings.append("center not found: Hough detected no circles.")
-    # if DEBUG_STEPS and center is not None:
-    #     debug_img = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
-    #     cx, cy = center
-    #     cv2.drawMarker(
-    #         debug_img, (cx, cy),
-    #         color=(0, 0, 255),
-    #         markerType=cv2.MARKER_CROSS,
-    #         markerSize=20,
-    #         thickness=2,
-    #     )
-    #     debug_path = OUTPUT_DEBUG_CENTER / f"{stem}.png"
-    #     cv2.imwrite(str(debug_path), debug_img)
-    #     print(f"  [3b] debug image saved: {debug_path}")
-
-
-    # -- STEP 3c: Outer ring detection --
-    outer_radius_px = None
-    if center is not None:
-        outer_radius_px = detect_outer_ring(
-            ring_mask,
-            center,
-            max_ring_radius_px=config["max_ring_radius_px"],
-        )
-    ## Uncomment this line if wanna see output images from outer radius
-    print(f"  [3c] outer_radius_px: {outer_radius_px}")
-    if outer_radius_px is None:
-        warnings.append("outer ring not found: check max_ring_radius_px and circle_color_range.")
-    if DEBUG_STEPS and center is not None and outer_radius_px is not None:
-        debug_img = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
-        cx, cy = center
-        cv2.drawMarker(
-            debug_img, (cx, cy),
-            color=(0, 0, 255),
-            markerType=cv2.MARKER_CROSS,
-            markerSize=20,
-            thickness=2,
-        )
-        cv2.circle(
-            debug_img, (cx, cy),
-            int(outer_radius_px),
-            color=(255, 0, 0),
-            thickness=2,
-        )
-        debug_path = OUTPUT_DEBUG_OUTER / f"{stem}.png"
-        cv2.imwrite(str(debug_path), debug_img)
-        print(f"  [3c] debug image saved: {debug_path}")
-
-    # -- STEP 4: Polar sampling --
-    # samples = sample_polar(
-    #     mask, center, outer_radius_px,
-    #     config["db_scale"]["min_db"],
-    #     config["db_scale"]["max_db"],
-    #     config["angle_offset_deg"],
-    # )
-
-    # -- STEP 5: Visualizer --
-    # save_annotated_image(mask, center, outer_radius_px, OUTPUT_IMAGES_DIR / f"{stem}.png")
-
-    # -- STEP 6: Result writer --
-    # write_pattern_json(
-    #     output_dir=OUTPUT_JSON_DIR,
-    #     filename_stem=stem,
-    #     manufacturer=manufacturer,
-    #     center=center,
-    #     outer_radius_px=outer_radius_px,
-    #     samples=samples,
-    # )
-
-    return {
-        "image": stem,
-        "manufacturer": manufacturer,
-        "warnings": warnings,
-    }
-
-
-def main() -> None:
-    print("=== RADIATION PATTERN EXTRACTION PIPELINE ===\n")
-    create_output_dirs()
-
-    for image_path, manufacturer in PROCESSING_QUEUE:
-        print(f"Processing: {image_path} [{manufacturer}]")
-        try:
-            result = process_single_image(image_path, manufacturer)
-            if result["warnings"]:
-                for w in result["warnings"]:
-                    print(f"  WARNING: {w}")
-        except (FileNotFoundError, ValueError, KeyError) as e:
-            print(f"  ERROR: {e}")
-        print()
-
-    print("Done.")
+    failed = [r for r in results if "error" in r]
+    logging.info(
+        "Done. %d/%d succeeded.", len(results) - len(failed), len(results)
+    )
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
