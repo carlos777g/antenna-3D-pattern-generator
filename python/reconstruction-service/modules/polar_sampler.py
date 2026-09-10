@@ -30,18 +30,23 @@ def sample_polar(
     For each angle, cast a ray from center outward and find the outermost
     pattern pixel. Map its distance to a dB value using the radial calibration.
 
-    Calibration is linear in radius between the two anchors read off the
-    datasheet plot: the center of the plot and the outermost graticule ring
-    detected by modules/outer_ring_detector.py.
+    Calibration is interpolated in radius between anchors read off the
+    datasheet plot. `db_scale` is either:
+    - simple: {"center_db": ..., "outer_db": ...} - a single linear span from
+      the plot center to the outermost graticule ring detected by
+      modules/outer_ring_detector.py.
+    - piecewise: {"anchors": [(ring, db), ...], "ring_divisions": N} - for
+      datasheets whose printed dB labels are not evenly spaced per ring. See
+      _resolve_db_anchors.
 
     Parameters
     ----------
     mask              : binary mask, 255 = pattern pixel, 0 = background
     center            : (cx, cy) in pixel coordinates
     outer_radius_px   : radius in pixels of the outermost graticule ring,
-                        i.e. the radius that maps to db_scale["outer_db"]
-    db_scale          : dict with keys center_db (value at the plot center)
-                        and outer_db (value at the outermost ring)
+                        as detected by modules/outer_ring_detector.py -
+                        never recomputed from the pattern mask here
+    db_scale          : radial dB calibration, see above
     angle_offset_deg  : rotation offset so that 0 deg points to the correct
                         direction in the image (0 = right / East by default)
     angle_step_deg    : angular resolution of the output (default 1 deg)
@@ -58,8 +63,7 @@ def sample_polar(
     if outer_radius_px is None or outer_radius_px <= 0:
         raise ValueError(f"outer_radius_px must be positive, got {outer_radius_px}")
 
-    center_db = db_scale["center_db"]
-    outer_db = db_scale["outer_db"]
+    radii_anchors, db_anchors = _resolve_db_anchors(db_scale, outer_radius_px)
 
     cx, cy = center
     height, width = mask.shape
@@ -82,8 +86,7 @@ def sample_polar(
         magnitude_db = _sample_ray(
             mask, cx, cy, dx, dy,
             max_search_radius,
-            outer_radius_px,
-            center_db, outer_db,
+            radii_anchors, db_anchors,
         )
 
         results.append({
@@ -117,21 +120,53 @@ def _neighbourhood_offsets(neighbourhood_px: int) -> list[tuple[int, int]]:
     return offsets
 
 
+def _resolve_db_anchors(db_scale: dict, outer_radius_px: float) -> tuple:
+    """
+    Build the (radius_px, magnitude_db) calibration points used for
+    np.interp, sorted by ascending radius.
+
+    Two config shapes are supported:
+    - simple: {"center_db": ..., "outer_db": ...} - one span from the plot
+      center (radius 0) to the outer ring (outer_radius_px).
+    - piecewise: {"anchors": [(ring, db), ...], "ring_divisions": N} - for a
+      datasheet whose graticule rings are evenly spaced in pixels but whose
+      printed dB labels are not evenly spaced per ring. `ring` counts rings
+      inward from the outer ring (ring 0 = outer_radius_px); `ring_divisions`
+      is the total number of equal pixel divisions from the outer ring to the
+      plot center (which need not itself be a labeled anchor). The radius for
+      a given ring is outer_radius_px * (ring_divisions - ring) / ring_divisions.
+    """
+    if "anchors" in db_scale:
+        ring_divisions = db_scale["ring_divisions"]
+        points = sorted(
+            (outer_radius_px * (ring_divisions - ring) / ring_divisions, db)
+            for ring, db in db_scale["anchors"]
+        )
+        radii = np.array([r for r, _ in points], dtype=float)
+        dbs = np.array([d for _, d in points], dtype=float)
+        return radii, dbs
+
+    return (
+        np.array([0.0, float(outer_radius_px)]),
+        np.array([db_scale["center_db"], db_scale["outer_db"]]),
+    )
+
+
 def _sample_ray(
     mask: np.ndarray,
     cx: int, cy: int,
     dx: float, dy: float,
     max_search_radius: int,
-    outer_radius_px: float,
-    center_db: float,
-    outer_db: float,
+    radii_anchors: np.ndarray,
+    db_anchors: np.ndarray,
     radial_step_px: float = RADIAL_STEP_PX,
     neighbourhood_px: int = NEIGHBOURHOOD_PX,
 ) -> Optional[float]:
     """
     Walk outward along a ray and find the outermost pattern pixel.
-    Map that pixel's distance to a dB value by linear radial interpolation.
-    Returns None if no pattern pixel is found along the ray.
+    Map that pixel's distance to a dB value by radial interpolation between
+    the calibration anchors. Returns None if no pattern pixel is found along
+    the ray.
     """
     height, width = mask.shape
     outermost_distance = None
@@ -151,14 +186,10 @@ def _sample_ray(
     if outermost_distance is None:
         return None
 
-    # 0 px -> center_db, outer_radius_px -> outer_db.
-    # np.interp clamps outside the range, so a trace overshooting the outer
-    # ring saturates at outer_db instead of extrapolating past the scale.
-    magnitude_db = float(np.interp(
-        outermost_distance,
-        [0.0, float(outer_radius_px)],
-        [center_db, outer_db],
-    ))
+    # np.interp clamps outside the anchor range, so a trace overshooting the
+    # outermost or innermost anchor saturates at that anchor's dB instead of
+    # extrapolating past the scale.
+    magnitude_db = float(np.interp(outermost_distance, radii_anchors, db_anchors))
 
     return round(magnitude_db, 2)
 
@@ -206,6 +237,18 @@ def fill_angular_gaps(samples: list[dict], max_gap_deg: float = 5.0) -> list[dic
             )
 
     return filled
+
+
+def db_scale_bounds(db_scale: dict) -> tuple[float, float]:
+    """
+    (min_db, max_db) spanned by a db_scale config, regardless of whether it is
+    the simple center/outer shape or the piecewise anchors shape. Used to
+    sanity-check that extracted magnitudes stay within the declared scale.
+    """
+    if "anchors" in db_scale:
+        dbs = [db for _, db in db_scale["anchors"]]
+        return min(dbs), max(dbs)
+    return db_scale["center_db"], db_scale["outer_db"]
 
 
 def coverage_ratio(samples: list[dict]) -> float:
