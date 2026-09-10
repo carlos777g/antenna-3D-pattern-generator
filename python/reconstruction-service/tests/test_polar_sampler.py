@@ -189,3 +189,66 @@ def test_coverage_ratio():
     assert coverage_ratio(make_samples([0.0] * 360)) == 1.0
     half = make_samples([0.0 if i % 2 else None for i in range(360)])
     assert coverage_ratio(half) == 0.5
+
+
+# Taoglas piecewise db_scale (config/manufacturer_config.py): the printed dB
+# labels are not evenly spaced per ring - 7.5 dB/ring for the outer two rings,
+# 5 dB/ring for the rest - while the 7 graticule rings themselves are evenly
+# spaced in pixels from the outer ring (ring 0) to the plot center.
+TAOGLAS_DB_SCALE = {
+    "anchors": [(0, 5), (2, -10), (5, -25)],
+    "ring_divisions": 7,
+}
+TAOGLAS_OUTER_RADIUS = 105.0  # divisible by 7 for exact anchor radii in the test
+
+
+def _filled_disc(radius, center=SYNTHETIC_CENTER, size=301):
+    cx, cy = center
+    ys, xs = np.mgrid[0:size, 0:size]
+    mask = np.zeros((size, size), dtype=np.uint8)
+    mask[(xs - cx) ** 2 + (ys - cy) ** 2 <= radius ** 2] = 255
+    return mask
+
+
+@pytest.mark.parametrize(
+    "ring, expected_db",
+    [(0, 5.0), (2, -10.0), (5, -25.0)],
+)
+def test_taoglas_piecewise_anchors_match_ground_truth(ring, expected_db):
+    """
+    A disc whose edge sits exactly on a labeled ring must read that ring's
+    printed dB value, regardless of the non-uniform dB/ring spacing.
+    """
+    radius = TAOGLAS_OUTER_RADIUS * (7 - ring) / 7
+    mask = _filled_disc(radius)
+
+    samples = sample_polar(mask, SYNTHETIC_CENTER, TAOGLAS_OUTER_RADIUS, TAOGLAS_DB_SCALE)
+    magnitudes = [s["magnitude_db"] for s in samples]
+    assert all(abs(m - expected_db) <= 1.0 for m in magnitudes)
+
+
+def test_taoglas_piecewise_anchors_interpolate_between_labeled_rings():
+    """
+    Halfway (by ring index) between ring 0 (5 dB) and ring 2 (-10 dB) is
+    ring 1, which must read the midpoint, -2.5 dB - not the midpoint of the
+    old linear center/outer scale.
+    """
+    radius = TAOGLAS_OUTER_RADIUS * (7 - 1) / 7
+    mask = _filled_disc(radius)
+
+    samples = sample_polar(mask, SYNTHETIC_CENTER, TAOGLAS_OUTER_RADIUS, TAOGLAS_DB_SCALE)
+    magnitudes = [s["magnitude_db"] for s in samples]
+    assert all(abs(m - (-2.5)) <= 1.0 for m in magnitudes)
+
+
+def test_taoglas_piecewise_anchors_clamp_past_innermost_anchor():
+    """
+    A trace inside ring 5 (the innermost labeled anchor, -25 dB) must clamp
+    at -25 dB rather than extrapolating toward the unlabeled center.
+    """
+    radius = TAOGLAS_OUTER_RADIUS * (7 - 6) / 7  # ring 6, past the last anchor
+    mask = _filled_disc(radius)
+
+    samples = sample_polar(mask, SYNTHETIC_CENTER, TAOGLAS_OUTER_RADIUS, TAOGLAS_DB_SCALE)
+    magnitudes = [s["magnitude_db"] for s in samples]
+    assert all(abs(m - (-25.0)) <= 0.6 for m in magnitudes)

@@ -30,9 +30,24 @@ MANUFACTURER_CONFIGS = {
             "b_min": 0,  "b_max": 255,
         },
         "angle_offset_deg": 0,      # degrees: where 0 deg is in the image (clockwise from top)
+        # Piecewise db_scale: the plot's dotted graticule rings are evenly
+        # spaced in pixels (7 rings from the outer boundary to the center,
+        # confirmed visually against datasheets/taoglas-1.png - the graticule
+        # color is too close to the label text color for per-ring pixel
+        # detection, so ring_divisions is an even split of outer_radius_px,
+        # not individually detected), but the printed dB labels on those
+        # rings are NOT evenly spaced: 5 / -2.5 / -10 / -15 / -20 / -25 / -30,
+        # center -35. That is 7.5 dB/ring for the outer two rings and
+        # 5 dB/ring for the rest. `anchors` lists (ring, db) pairs actually
+        # read off the plot; `ring` counts rings inward from the outer ring
+        # (ring 0). See modules/polar_sampler._resolve_db_anchors.
         "db_scale": {
-            "center_db": -35,       # innermost label is -25; scale continues to -35 at center
-            "outer_db": 5,
+            "anchors": [
+                (0, 5),
+                (2, -10),
+                (5, -25),
+            ],
+            "ring_divisions": 7,
         },
         "circle_color_range": {      # color of concentric rings in this manufacturer's images
             "r_min": 0, "r_max": 80,
@@ -194,17 +209,50 @@ def validate_manufacturer_config(config: dict, name: str = "<config>") -> None:
             )
 
     db_scale = config["db_scale"]
-    missing_db = [key for key in ("center_db", "outer_db") if key not in db_scale]
-    if missing_db:
-        raise KeyError(
-            f"Manufacturer '{name}' db_scale is missing keys: {missing_db}"
-        )
-    if db_scale["center_db"] >= db_scale["outer_db"]:
-        raise ValueError(
-            f"Manufacturer '{name}' db_scale expects center_db < outer_db "
-            f"(plot center is the lowest value), got "
-            f"center_db={db_scale['center_db']}, outer_db={db_scale['outer_db']}"
-        )
+    if "anchors" in db_scale:
+        missing_db = [key for key in ("anchors", "ring_divisions") if key not in db_scale]
+        if missing_db:
+            raise KeyError(
+                f"Manufacturer '{name}' db_scale is missing keys: {missing_db}"
+            )
+        anchors = db_scale["anchors"]
+        ring_divisions = db_scale["ring_divisions"]
+        if not isinstance(ring_divisions, int) or ring_divisions < 1:
+            raise ValueError(
+                f"Manufacturer '{name}' expects db_scale.ring_divisions to be an "
+                f"integer >= 1, got {ring_divisions!r}"
+            )
+        if len(anchors) < 2:
+            raise ValueError(
+                f"Manufacturer '{name}' db_scale.anchors needs at least 2 points, "
+                f"got {len(anchors)}"
+            )
+        rings_seen = [ring for ring, _ in anchors]
+        if any(not isinstance(ring, int) or ring < 0 or ring > ring_divisions for ring in rings_seen):
+            raise ValueError(
+                f"Manufacturer '{name}' db_scale.anchors rings must be integers "
+                f"in [0, ring_divisions={ring_divisions}], got {rings_seen}"
+            )
+        by_ring = sorted(anchors, key=lambda pair: pair[0])
+        dbs_by_ring = [db for _, db in by_ring]
+        if dbs_by_ring != sorted(dbs_by_ring, reverse=True):
+            raise ValueError(
+                f"Manufacturer '{name}' db_scale.anchors expects dB to decrease "
+                f"monotonically as ring increases (ring 0 is the outer, highest "
+                f"reading), got {by_ring}"
+            )
+    else:
+        missing_db = [key for key in ("center_db", "outer_db") if key not in db_scale]
+        if missing_db:
+            raise KeyError(
+                f"Manufacturer '{name}' db_scale is missing keys: {missing_db}"
+            )
+        if db_scale["center_db"] >= db_scale["outer_db"]:
+            raise ValueError(
+                f"Manufacturer '{name}' db_scale expects center_db < outer_db "
+                f"(plot center is the lowest value), got "
+                f"center_db={db_scale['center_db']}, outer_db={db_scale['outer_db']}"
+            )
 
     if not isinstance(config["ring_count"], int) or config["ring_count"] < 1:
         raise ValueError(

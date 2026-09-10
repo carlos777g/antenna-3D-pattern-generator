@@ -1,4 +1,4 @@
-# main.py
+# main.py 
 """
 CLI entry point for the radiation pattern extraction pipeline.
 

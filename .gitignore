@@ -12,6 +12,9 @@ Session.vim
 tags
 .tags
 
+# -- Editor (vscode) ---
+*.vscode
+
 # --- Node / pnpm ---
 node_modules/
 .pnpm-debug.log*

@@ -93,8 +93,10 @@ def test_magnitudes_stay_inside_the_declared_db_scale(entry, tmp_path, datasheet
     center->max_db mapping produced for four of the five manufacturers.
     """
     from config.manufacturer_config import get_manufacturer_config
+    from modules.polar_sampler import db_scale_bounds
 
     db_scale = get_manufacturer_config(entry["manufacturer"])["db_scale"]
+    min_db, max_db = db_scale_bounds(db_scale)
     result = process_single_image(
         entry["image"], entry["manufacturer"], entry["plane"], output_dir=tmp_path
     )
@@ -103,8 +105,8 @@ def test_magnitudes_stay_inside_the_declared_db_scale(entry, tmp_path, datasheet
 
     magnitudes = [p["magnitudeDb"] for p in pattern if p["magnitudeDb"] is not None]
     assert magnitudes
-    assert min(magnitudes) >= db_scale["center_db"] - 0.01
-    assert max(magnitudes) <= db_scale["outer_db"] + 0.01
+    assert min(magnitudes) >= min_db - 0.01
+    assert max(magnitudes) <= max_db + 0.01
 
 
 def test_artifacts_are_written(tmp_path, datasheets_dir):
