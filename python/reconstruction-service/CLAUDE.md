@@ -103,3 +103,42 @@ Before describing a manufacturer as calibrated, re-plot the emitted `pattern` in
 polar coordinates and compare it against the source image. The README documents
 the procedure. Do not report a coverage figure as evidence of a working
 extraction on its own.
+
+## 3D reconstruction algorithms (not yet implemented)
+
+Everything above this section covers the extraction CLI (phase 1). This
+section is forward-looking, for when RF-04/RF-05 (`revolution`,
+`patent`) and the analytic-expression path (RF-02) are started.
+
+`docs/theory.md` (repo root) is the source of truth for the
+reconstruction math — implement exactly what's specified there, using
+the same variable names (`gv`, `gh`, `theta`, `phi`, `G_R`, `G_new`,
+`W`) in code comments. If a question isn't answered there, add it to
+that file's interpretation decisions log rather than resolving it
+silently in code — same discipline already used in this file for
+extraction (e.g. `REQUIRED_KEYS`, the mask polarity rule).
+
+Hard constraints once that work starts:
+
+- **Linear gain internally, dB only at the boundary.** Every
+  reconstruction computation operates on linear gain normalized to max
+  1. Convert `magnitudeDb -> linear` on input, `linear -> magnitudeDb`
+  on output. A function that multiplies or divides two `*_db` values
+  together is a bug — dB is logarithmic, not a linear ratio.
+- **`patent` requires two views in distinct roles** (one horizontal
+  `gh`, one vertical `gv`), not two interchangeable views — see
+  `docs/theory.md` Section 2.1. Reject two views of the same role
+  rather than guessing.
+- **Do not start the `patent` method** while `docs/theory.md`'s
+  interpretation decisions log still marks the angle/direction
+  convention item "Open." `revolution` and the analytic path are not
+  blocked by this.
+- **`revolution` results must be labeled with their symmetry
+  assumption** wherever surfaced — it's a simplification, not an
+  equivalent-accuracy alternative to `patent`.
+
+Testing: every formula in `docs/theory.md` (rotation estimate,
+correction term, hybrid formula, both transition functions) needs a
+unit test against a hand-computable or synthetically generated case,
+following the same synthetic-fixture pattern already used for the
+extraction pipeline's `tests/conftest.py`.

@@ -225,3 +225,13 @@ nothing; `pipeline.py` resolves its own output paths.
 
 **`docs/MODULES_DETAIL.md` is still empty** — the per-module signature and
 tuning-knob reference has not been written yet.
+
+## 3D reconstruction algorithms
+
+Not built yet (roadmap phase 2: `revolution` and `patent` methods,
+analytic-expression path). Full mathematical specification is in
+[`docs/theory.md`](../../docs/theory.md) — read it before starting that
+work. The `patent` method is currently blocked on an open item in that
+document's interpretation decisions log (the angle/direction convention
+between this module's extracted `angleDeg` and the patent's coordinate
+assumptions); `revolution` and the analytic path are not blocked.
