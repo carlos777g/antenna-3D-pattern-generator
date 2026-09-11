@@ -210,9 +210,10 @@ language convention for code and technical documentation.
 Notes:
 
 - `views` holds one entry for `revolution` and two for `patent`.
-- `pattern` covers 0-360 degrees at a fixed **1 degree** angular resolution,
-  set at ingestion time. Any resampling to a different resolution happens
-  explicitly in the reconstruction step, not silently at ingestion.
+- `pattern` covers 0-359 degrees (360 samples) at a fixed **1 degree**
+  angular resolution, set at ingestion time. Any resampling to a
+  different resolution happens explicitly in the reconstruction step,
+  not silently at ingestion.
 - `computed.directivityDb` and `computed.efficiency` are populated only when
   `metadata.antennaType` is in a supported list AND a reference gain value is
   present; the exact trigger rule is defined in `docs/data-schema.md`, not
