@@ -38,7 +38,7 @@ def build_annotated_image(
         color=(0, 0, 255),
         markerType=cv2.MARKER_CROSS,
         markerSize=20,
-        thickness=2,
+        thickness=1,
     )
 
     return annotated
