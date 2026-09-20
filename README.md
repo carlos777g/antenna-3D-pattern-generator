@@ -219,7 +219,7 @@ Notes:
   present; the exact trigger rule is defined in `docs/data-schema.md`, not
   left implicit.
 - This document is the source of truth for the schema; any change here must
-  be reflected in both `packages/api` and `python/reconstruction-service`.
+  be reflected in both `packages/server` and `python/reconstruction-service`.
 
 ## Functional Requirements
 
@@ -312,10 +312,10 @@ and CLAUDE.md once work on it begins.
 2. **3D reconstruction algorithms** (`python/reconstruction-service`,
    reconstruction path): `revolution` and `patent` methods, uniform
    spherical mesh generation, analytic expression sandboxed evaluation.
-3. **Node API** (`packages/api`): input validation, session persistence,
+3. **Node API** (`packages/server`): input validation, session persistence,
    orchestration of calls to the Python service, REST contract for the
    client.
-4. **Frontend** (`packages/web`): input forms, Three.js visualization,
+4. **Frontend** (`packages/client`): input forms, Three.js visualization,
    PNG/JSON export.
 5. **Validation module**: comparison pipeline (MSE, angular deviation)
    against reference datasets.
