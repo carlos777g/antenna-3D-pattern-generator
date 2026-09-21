@@ -136,6 +136,12 @@ Hard constraints once that work starts:
 - **`revolution` results must be labeled with their symmetry
   assumption** wherever surfaced — it's a simplification, not an
   equivalent-accuracy alternative to `patent`.
+- **Emit the `pattern3d` block defined in `docs/data-schema.md`** — a
+  1-degree spherical grid (181 x 360), row-major with theta as the outer
+  index, in the physical Z-up frame, with constant pole rows, no
+  duplicated seam column, finite dB normalized to a 0 dB maximum, plus
+  `rangeDb` and `symmetryAssumption`. That document is the contract; do
+  not invent a mesh shape here.
 
 Testing: every formula in `docs/theory.md` (rotation estimate,
 correction term, hybrid formula, both transition functions) needs a

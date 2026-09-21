@@ -184,6 +184,7 @@ language convention for code and technical documentation.
 
 ```json
 {
+  "schemaVersion": 1,
   "sourceType": "image | analytic",
   "plane": "XY | XZ | YZ",
   "metadata": {
@@ -200,6 +201,13 @@ language convention for code and technical documentation.
       ]
     }
   ],
+  "pattern3d": {
+    "thetaDeg": { "start": 0, "stop": 180, "stepDeg": 1, "count": 181 },
+    "phiDeg":   { "start": 0, "stop": 359, "stepDeg": 1, "count": 360 },
+    "magnitudeDb": [0.0, -0.1, "... 65160 values ..."],
+    "rangeDb": { "min": -38.4, "max": 0.0 },
+    "symmetryAssumption": "axial | none"
+  },
   "computed": {
     "directivityDb": null,
     "efficiency": null
@@ -210,6 +218,11 @@ language convention for code and technical documentation.
 Notes:
 
 - `views` holds one entry for `revolution` and two for `patent`.
+- `pattern3d` holds the reconstructed 3D grid and is absent until
+  reconstruction has run. Its full rules (angular frame, row-major
+  ordering, pole and seam constraints) are in `docs/data-schema.md`.
+- `schemaVersion` is `1`. A consumer that reads an unknown version
+  rejects the payload rather than guessing at the shape.
 - `pattern` covers 0-359 degrees (360 samples) at a fixed **1 degree**
   angular resolution, set at ingestion time. Any resampling to a
   different resolution happens explicitly in the reconstruction step,

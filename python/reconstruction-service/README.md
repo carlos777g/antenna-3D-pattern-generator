@@ -215,11 +215,6 @@ the graticule. Separating them needs a geometric filter, not a colour one.
 Both are marked `xfail(strict=True)` in `tests/test_pipeline_integration.py`, so
 a fix will show up as an `XPASS` rather than going unnoticed.
 
-**Angular range wording.** The root README says "0–360" while
-`docs/data-schema.md` says "0–359". This module implements 0–359 with 360
-entries, per the schema doc, which is the source of truth. The root README
-wording needs reconciling.
-
 **Unused helper.** `utils/file_utils.resolve_output_path` is currently called by
 nothing; `pipeline.py` resolves its own output paths.
 
