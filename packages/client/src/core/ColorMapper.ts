@@ -1,36 +1,57 @@
 import * as THREE from "three";
 
+export interface Rgb {
+  r: number;
+  g: number;
+  b: number;
+}
+
 /**
  * ColorMapper
- * Responsabilidad única: mapear valores numéricos a colores RGB
- * y aplicarlos como BufferAttribute sobre una geometría existente.
+ * Single responsibility: map magnitudes in dB to RGB colours and apply them
+ * as a BufferAttribute on an existing geometry.
  *
- * El colormap "jet" (azul→cian→verde→amarillo→rojo) es ideal para
- * representar intensidades de campo eléctrico / distancias radiales.
+ * The "jet" colormap (blue -> cyan -> green -> yellow -> red) suits
+ * field-intensity magnitudes.
  */
 export class ColorMapper {
   /**
-   * Recorre todos los vértices de una geometría, calcula t ∈ [0,1]
-   * según el modo elegido, y asigna el BufferAttribute "color".
+   * Colours a geometry by magnitude in dB, scaled against the contract's
+   * rangeDb.
    *
-   * @param {THREE.BufferGeometry} geometry  - geometría a colorear
-   * @param {string} mode  - "altura" | "distancia" | "latitud"
-   * @param {number} scale - valor máximo esperado para normalizar
+   * Colour deliberately follows the magnitude rather than the radius: the
+   * radius depends on the user's dynamic-range floor, and a colour scale
+   * that moved with it would stop being physically readable.
+   *
+   * Note this maps each dB value independently; it never combines two.
    */
-  static applyToGeometry(geometry, mode, scale = 1) {
-    const positions = geometry.attributes.position;
-    const count = positions.count;
-    const colors = new Float32Array(count * 3);
+  static applyMagnitudeColors(
+    geometry: THREE.BufferGeometry,
+    magnitudeDb: number[],
+    rangeDb: { min: number; max: number },
+  ): void {
+    const position = geometry.attributes.position;
+    if (!position) {
+      throw new Error("geometry has no position attribute to colour");
+    }
+    if (magnitudeDb.length !== position.count) {
+      throw new Error(
+        `magnitudeDb has ${magnitudeDb.length} values but the geometry has ` +
+          `${position.count} vertices`,
+      );
+    }
 
-    for (let i = 0; i < count; i++) {
-      const x = positions.getX(i);
-      const y = positions.getY(i);
-      const z = positions.getZ(i);
+    const span = rangeDb.max - rangeDb.min;
+    const colors = new Float32Array(position.count * 3);
 
-      const t = ColorMapper._normalize(x, y, z, mode, scale);
+    for (let i = 0; i < position.count; i += 1) {
+      // A degenerate range (a perfectly isotropic pattern) has no gradient to
+      // show, so every vertex sits at the top of the scale.
+      const t =
+        span === 0 ? 1 : ((magnitudeDb[i] ?? rangeDb.min) - rangeDb.min) / span;
       const { r, g, b } = ColorMapper.jet(t);
 
-      colors[i * 3]     = r;
+      colors[i * 3] = r;
       colors[i * 3 + 1] = g;
       colors[i * 3 + 2] = b;
     }
@@ -38,48 +59,27 @@ export class ColorMapper {
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   }
 
-  // ------------------------------------------------------------------
-  // Calcula t ∈ [0,1] para un vértice (x,y,z) según el modo
-  // ------------------------------------------------------------------
-  static _normalize(x, y, z, mode, scale) {
-    switch (mode) {
-      case "altura":
-        // t según componente Y (−scale → 0, +scale → 1)
-        return (y + scale) / (2 * scale);
+  /** The "jet" colormap: blue -> cyan -> green -> yellow -> red, t in [0, 1]. */
+  static jet(t: number): Rgb {
+    const clamped = Math.max(0, Math.min(1, t));
 
-      case "distancia":
-        // t según distancia euclidiana al origen
-        return Math.sqrt(x * x + y * y + z * z) / scale;
-
-      case "latitud":
-        // t según |Y| normalizado (polos = 1, ecuador = 0)
-        return Math.abs(y) / scale;
-
-      default:
-        return 0.5;
-    }
-  }
-
-  // ------------------------------------------------------------------
-  // Colormap "jet": azul → cian → verde → amarillo → rojo
-  // t ∈ [0, 1]
-  // ------------------------------------------------------------------
-  static jet(t) {
-    t = Math.max(0, Math.min(1, t));
-
-    const stops = [
-      [0,    [0, 0, 1]],
+    const stops: [number, [number, number, number]][] = [
+      [0, [0, 0, 1]],
       [0.25, [0, 1, 1]],
-      [0.5,  [0, 1, 0]],
+      [0.5, [0, 1, 0]],
       [0.75, [1, 1, 0]],
-      [1,    [1, 0, 0]],
+      [1, [1, 0, 0]],
     ];
 
-    for (let i = 0; i < stops.length - 1; i++) {
-      const [t0, c0] = stops[i];
-      const [t1, c1] = stops[i + 1];
-      if (t >= t0 && t <= t1) {
-        const f = (t - t0) / (t1 - t0);
+    for (let i = 0; i < stops.length - 1; i += 1) {
+      const current = stops[i];
+      const next = stops[i + 1];
+      if (!current || !next) continue;
+
+      const [t0, c0] = current;
+      const [t1, c1] = next;
+      if (clamped >= t0 && clamped <= t1) {
+        const f = (clamped - t0) / (t1 - t0);
         return {
           r: c0[0] + f * (c1[0] - c0[0]),
           g: c0[1] + f * (c1[1] - c0[1]),
@@ -87,13 +87,7 @@ export class ColorMapper {
         };
       }
     }
+
     return { r: 1, g: 0, b: 0 };
   }
-
-  // ------------------------------------------------------------------
-  // PRÓXIMOS COLORMAPS (para distintos tipos de visualización)
-  // ------------------------------------------------------------------
-  // static viridis(t) { ... }
-  // static plasma(t)  { ... }
-  // static hot(t)     { ... }
 }

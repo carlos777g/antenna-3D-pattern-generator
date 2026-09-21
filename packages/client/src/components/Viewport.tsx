@@ -1,21 +1,29 @@
-import { useRef } from "react";
-import { useThreeScene } from "../hooks/useThreeScene";
+import type { RefObject } from "react";
 
 /**
  * Viewport
- * Responsabilidad única: renderizar el <canvas> donde vive Three.js.
- *
- * Recibe params desde ControlPanel (vía App) y los pasa al hook.
- * No contiene lógica Three.js directa — eso es trabajo del hook.
+ * Single responsibility: render the <canvas> that Three.js draws into,
+ * plus any error the render pipeline reports. It owns no Three.js state.
  */
-export function Viewport({ params }) {
-  const canvasRef = useRef(null);
-  useThreeScene(canvasRef, params);
-
+export function Viewport({
+  canvasRef,
+  error,
+}: {
+  canvasRef: RefObject<HTMLCanvasElement | null>;
+  error: string | null;
+}) {
   return (
-    <canvas
-      ref={canvasRef}
-      className="flex-1 block cursor-grab active:cursor-grabbing"
-    />
+    <div className="flex-1 relative">
+      <canvas
+        ref={canvasRef}
+        aria-label="Interactive 3D radiation pattern"
+        className="w-full h-full block cursor-grab active:cursor-grabbing"
+      />
+      {error && (
+        <p role="alert" className="absolute top-4 left-4 bg-[#4a1020] px-3 py-2 text-sm">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }

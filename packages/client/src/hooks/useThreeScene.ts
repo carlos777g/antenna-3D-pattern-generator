@@ -1,56 +1,91 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
+import { Pattern3dError, type Pattern3d } from "schema";
 import { SceneManager } from "../core/SceneManager";
 import { GeometryBuilder } from "../core/GeometryBuilder";
+import { ColorMapper } from "../core/ColorMapper";
 
 /**
  * useThreeScene
- * Puente entre React y Three.js.
+ * Bridge between React and Three.js.
  *
- * Responsabilidades:
- *  1. Inicializar SceneManager una sola vez (al montar el componente)
- *  2. Reconstruir la geometría cada vez que cambian los parámetros
- *  3. Limpiar recursos al desmontar (stopLoop, removeEventListeners)
- *
- * @param {React.RefObject} canvasRef - ref al elemento <canvas>
- * @param {object} params             - parámetros de geometría y color
+ * 1. Creates the SceneManager once, on mount
+ * 2. Rebuilds the geometry whenever the pattern or the floor changes
+ * 3. Releases GPU resources on unmount
  */
-export function useThreeScene(canvasRef, params) {
-  const sceneRef = useRef(null);
+export function useThreeScene(
+  canvasRef: RefObject<HTMLCanvasElement | null>,
+  pattern: Pattern3d | null,
+  floorDb: number,
+): { error: string | null; sceneRef: RefObject<SceneManager | null> } {
+  const sceneRef = useRef<SceneManager | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  // ── Inicialización (solo al montar) ──────────────────────────────
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const sm = new SceneManager(canvas);
-    sceneRef.current = sm;
+    // Three.js throws when the browser cannot hand out a WebGL context, which
+    // happens whenever GPU acceleration is unavailable or disabled. Letting
+    // that escape the effect takes the whole React tree down and leaves a
+    // blank page, so it is reported the same way a malformed pattern is.
+    let manager: SceneManager;
+    try {
+      manager = new SceneManager(canvas);
+    } catch (caught) {
+      setError(
+        "WebGL is unavailable in this browser, so the 3D pattern cannot be " +
+          "drawn. Enable hardware acceleration (chrome://settings/system) " +
+          `and check chrome://gpu for details. Underlying error: ${String(caught)}`,
+      );
+      return;
+    }
 
-    // Construir geometría inicial
-    const mesh = GeometryBuilder.buildSphere(params);
-    sm.setMesh(mesh);
-    sm.startLoop();
+    sceneRef.current = manager;
+    manager.startLoop();
 
-    // Redimensionar si cambia el viewport
     const onResize = () =>
-      sm.resize(canvas.clientWidth, canvas.clientHeight);
+      manager.resize(canvas.clientWidth, canvas.clientHeight);
     window.addEventListener("resize", onResize);
 
     return () => {
-      sm.stopLoop();
       window.removeEventListener("resize", onResize);
+      manager.dispose();
+      sceneRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // [] → solo una vez
+  }, [canvasRef]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
-  // ── Actualizar geometría cuando cambian params ────────────────────
+  // Building the geometry is an imperative GPU side effect, and the error is
+  // its outcome, so there is no render-time place to derive it from. The
+  // set-state-in-effect rule targets state that could be computed during
+  // render; this state cannot.
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    const sm = sceneRef.current;
-    if (!sm) return;
+    const manager = sceneRef.current;
+    if (!manager || !pattern) return;
 
-    const mesh = GeometryBuilder.buildSphere(params);
-    sm.setMesh(mesh);
-  }, [params]);
+    try {
+      const geometry = GeometryBuilder.buildRadiationPattern(pattern, {
+        floorDb,
+      });
+      ColorMapper.applyMagnitudeColors(
+        geometry,
+        pattern.magnitudeDb,
+        pattern.rangeDb,
+      );
+      manager.setPatternGeometry(geometry);
+      setError(null);
+    } catch (caught) {
+      // A malformed grid is reported, never rendered.
+      setError(
+        caught instanceof Pattern3dError
+          ? `Invalid pattern (${caught.code}): ${caught.message}`
+          : String(caught),
+      );
+    }
+  }, [pattern, floorDb]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
-  // Exponer sceneRef por si un componente necesita acceso directo
-  return sceneRef;
+  return { error, sceneRef };
 }
